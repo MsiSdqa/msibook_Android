@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_msi_point"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="MSI Point" />
+        <item
+            android:id="@+id/nav_ims"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="IMS" />
+        <item
+            android:id="@+id/nav_overtime"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="出缺勤" />
+        <item
+            android:id="@+id/nav_facility"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="週報" />
+        <item
+            android:id="@+id/nav_weekly_report"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="週報" />
+    </group>
+
+    <item android:title="功能">
+        <menu>
+            <item
+                android:id="@+id/nav_resource_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_resume"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+            <item
+                android:id="@+id/nav_mmc"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+            <item
+                android:id="@+id/nav_laboratory"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+            <item
+                android:id="@+id/nav_message"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

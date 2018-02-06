@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dqa.com.msibook.msibook_facility">
+
+    <RelativeLayout
+        android:id="@+id/relative_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#1799dd"
+            android:gravity="center"
+            android:text="台北實驗室"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_down"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative_up"
+        android:background="#dddddd">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:tabIndicatorColor="#1799dd"
+            app:tabIndicatorHeight="5dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#6d7073"
+            app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"
+            app:tabTextColor="#a3a3a3" />
+
+        <ListView
+            android:id="@+id/Lsv_Facility"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabs"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            android:divider="#dddddd"
+            android:dividerHeight="5dp"
+            android:fadeScrollbars="false"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray" />
+    </RelativeLayout>
+
+</RelativeLayout>

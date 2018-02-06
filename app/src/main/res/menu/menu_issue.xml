@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.apps.ims.MainTab">
+
+    <item
+        android:id="@+id/CloseIssue"
+        android:title="Close Issue" />
+
+    <item
+        android:id="@+id/Reject_Verify_Issue"
+        android:title="Fail" />
+
+    <item
+        android:id="@+id/IssueOwner"
+        android:title="Change Owner" />
+
+    <item
+        android:id="@+id/IssuePriotiry"
+        android:title="Change Priotiry" />
+</menu>

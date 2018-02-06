@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:paddingTop="5dp"
+        android:gravity="top">
+
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/Img_WorkNote_Author" />
+
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="14dp">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|top"
+            android:id="@+id/Rel_Top_Content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingRight="10dp"
+                android:textSize="20sp"
+                android:id="@+id/txt_WorkNote_Author"
+                android:textColor="@color/WorkNote_Author"
+                android:layout_gravity="center_horizontal"
+                android:gravity="left|top"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="18sp"
+                android:id="@+id/txt_WorkNote_Date"
+                android:textColor="@color/WorkNote_Date"
+                android:layout_gravity="center_horizontal"
+                android:gravity="right|top"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/txt_WorkNote_Author"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp"
+            android:gravity="left|center_vertical"
+            android:id="@+id/Rel_Bottom_Content">
+
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/Img_WorkNote"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/txt_Issue_WorkNoteCount" />
+
+            <dqa.com.msibook.msibook_ims_issue_video_play
+                android:id="@+id/IssueVideoPlay"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:scaleType="centerCrop"/>
+
+
+            <dqa.com.msibook.msibook_ims_issue_voice_play
+                android:id="@+id/IssueVoicePlay"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:scaleType="centerCrop">
+
+            </dqa.com.msibook.msibook_ims_issue_voice_play>
+
+            <TextView
+                android:id="@+id/txt_WorkNote_Content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_toLeftOf="@+id/txt_Issue_WorkNoteCount"
+                android:gravity="left|top"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/WorkNote_Content"
+                android:textSize="@dimen/text_size_medium" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

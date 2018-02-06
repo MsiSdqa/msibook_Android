@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dqa.com.msibook.msibook_facility_booking_status">
+
+    <RelativeLayout
+        android:id="@+id/relative_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView_title1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#1799dd"
+            android:gravity="center"
+            android:text="預約狀況"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_title1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textColor="#6d7073"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_down"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative_up"
+        android:background="#f1f1f1 ">
+
+        <ListView
+            android:id="@+id/Lsv_Facility"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabs"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#f1f1f1 "
+            android:divider="#f1f1f1 "
+            android:dividerHeight="5dp"
+            android:fadeScrollbars="false"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray" />
+    </RelativeLayout>
+
+</android.widget.RelativeLayout>
