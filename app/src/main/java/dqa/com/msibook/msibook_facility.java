@@ -299,7 +299,6 @@ public class msibook_facility extends AppCompatActivity {
                 txt_Status.setText("不開放");
                 txt_Status.setTextColor(Color.parseColor("#6d7073"));
                 txt_Status.setBackgroundColor(Color.parseColor("#d8d8db"));
-
             }
 
             txt_AssetSN.setText("財編 : "+msibook_facility_item_List.get(position).GetF_AssetNo());

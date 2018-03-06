@@ -110,7 +110,19 @@ public class MainPage extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent dqaweekly = new Intent(mContent,msibook_facility.class);
+                Intent dqaweekly = new Intent(mContent,msibook_dqaweekly_main.class);
+
+                mContent.startActivity(dqaweekly);
+            }
+        });
+
+        Button Btn_eHR = (Button)findViewById(R.id.Btn_eHR);
+
+        Btn_eHR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent dqaweekly = new Intent(mContent,msibook_ehr_splashscreen.class);
 
                 mContent.startActivity(dqaweekly);
             }

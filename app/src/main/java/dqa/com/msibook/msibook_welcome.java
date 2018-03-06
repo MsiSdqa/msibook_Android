@@ -45,7 +45,7 @@ public class msibook_welcome extends AppCompatActivity {
 
                     startActivity(intent);
 
-                    finish();
+                   // finish();
                 } else {
                     Intent intent = new Intent(msibook_welcome.this, msibook_login.class);
                     startActivity(intent);

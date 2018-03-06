@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    tools:ignore="RtlHardcoded">
+
+    <TextView
+        android:id="@+id/lblListItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="#656565"
+        android:textSize="21sp"
+        tools:ignore="InefficientWeight,RtlHardcoded,RtlSymmetry,SpUsage" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/dqaweekly_ic_more_arrow"
+        android:focusable="false"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+</LinearLayout>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#527da3"
+    android:orientation="vertical"
+    android:paddingTop="5dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/main_lin1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_home"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="首頁"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_lin6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_home"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="部級週報首頁"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_lin2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_calculation"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="計算公式"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_lin3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_operating"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="操作說明"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_lin4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_info"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="版本紀錄"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_lin7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_qrcode"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="目前版本"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="4.8"
+                android:textColor="#426482"
+                android:textSize="21sp"
+                tools:ignore="HardcodedText,InefficientWeight" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_lin5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:background="#dee3e9"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:src="@mipmap/dqaweekly_ic_menu_update"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="檢查更新"
+                android:textColor="#426482"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

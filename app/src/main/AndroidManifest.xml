@@ -49,7 +49,7 @@
         <activity
             android:name=".msibook_login"
             android:label="@string/title_activity_msibook_login"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity android:name=".msibook_welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,14 +93,26 @@
         <activity android:name=".msibook_ims_issue_close" />
         <activity android:name=".msibook_ims_issue_play_video" />
         <activity android:name=".msibook_facility">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".msibook_facility_detial" />
-        <activity android:name=".msibook_facility_booking_status"></activity>
+        <activity android:name=".msibook_facility_booking_status" />
+        <activity android:name=".msibook_dqaweekly_main" />
+        <activity android:name=".msibook_dqaweekly_main_page2" />
+        <activity
+            android:name=".msibook_dqaweekly_main_info_utirateinfo"
+            android:theme="@style/dqaweekly_Theme.MyDialog" />
+        <activity android:name=".msibook_ehr_splashscreen" />
+        <activity android:name=".msibook_ehr_main" />
+        <activity android:name=".msibook_ehr_new_job_add" />
+        <activity android:name=".msibook_ehr_main_page2" />
+        <activity android:name=".msibook_dqaweekly_main_page2_project_list"></activity>
     </application>
 
 </manifest>

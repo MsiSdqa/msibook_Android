@@ -60,4 +60,26 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <!--週報Use-->
+    <style name="dqaweekly_popupAnim" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@animator/anim_show</item>
+        <item name="android:windowExitAnimation">@animator/anim_dismiss</item>
+    </style>
+
+    <style name="dqaweekly_Theme.MyDialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!---週報end-->
+
+    <!--eHR Use-->
+
+    <style name="eHR_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" ></style>
+
+    <style name="eHR_PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
+
+    <!---eHR Use-->
+
 </resources>

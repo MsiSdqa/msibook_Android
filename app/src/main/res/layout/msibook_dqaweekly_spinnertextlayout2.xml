@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    tools:ignore="MissingPrefix,RtlHardcoded,UnusedAttribute"
+    layout_height="wrap_content"
+    layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:elevation="0dp">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/style2"
+        tools:ignore="Deprecated,HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnusedAttribute"
+        android:textColor="#fff"
+        android:background="#618db5"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textIsSelectable="false"
+        android:singleLine="false"
+        android:elevation="0dp"
+        android:textSize="18sp"
+        android:gravity="center">
+    </TextView>
+</LinearLayout>

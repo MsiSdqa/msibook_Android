@@ -45,15 +45,6 @@ public class AppClass {
 
     private static Toast toast;
 
-
-
-
-
-    
-
-
-
-
     /**
      * 從給定的路徑載入圖片，並指定是否自動旋轉方向
      */

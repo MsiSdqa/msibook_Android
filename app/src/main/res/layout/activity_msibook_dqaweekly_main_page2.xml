@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dqa.com.msibook.msibook_dqaweekly_main_page2">
+
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:background="#527da3"
+        android:layout_width="match_parent"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/logo_msi"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@mipmap/dqaweekly_logo_msi"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewshowdepart"
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnknownId"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/logo_msi"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e2e2e2"
+            android:id="@+id/frame2"
+            tools:ignore="NotSibling,UnknownId"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewshowdepart">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_listtop"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"
+                android:textColor="#575757"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:textSize="21sp" />
+
+            <ListView
+                android:id="@+id/list2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_listtop"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="55dp"
+                android:background="#fff"
+                android:divider="#e2e2e2"
+                android:dividerHeight="10dp"
+                android:fastScrollAlwaysVisible="false"
+                android:headerDividersEnabled="false"
+                tools:ignore="ObsoleteLayoutParam" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textViewshowweek"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textViewshowdepart"
+            android:layout_alignBottom="@+id/logo_msi"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_toEndOf="@+id/logo_msi"
+            android:layout_toRightOf="@+id/logo_msi"
+            android:elevation="0dp"
+            android:gravity="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlHardcoded,SpUsage,UnusedAttribute" />
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

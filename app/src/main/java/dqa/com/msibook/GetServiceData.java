@@ -53,6 +53,11 @@ public class GetServiceData {
 
     public static String IMS_ServicePath = "http://wtsc.msi.com.tw/IMS/IMS_App_Service.asmx";
 
+    public static String DQAWeeklyPath = "http://wtsc.msi.com.tw/IMS/Weekly_Report.asmx";
+    public static String DQAWeekly_Login_P1 = "http://wtsc.msi.com.tw/IMS/Weekly_Report.asmx/Find_Dept_List";//週報有權限看全部門(部門Spinner)
+    public static String DQAWeekly_Login_P2 = "http://wtsc.msi.com.tw/IMS/Weekly_Report.asmx/Find_Dept_List_WorkID";//無權限，只能看自己部門(部門Spinner)
+
+
     //測試機
     //public static String ServicePath = "http://172.16.111.111:200/IMS_App_Service.asmx";
 
@@ -124,9 +129,6 @@ public class GetServiceData {
 
             @Override
             public void onResponse(String response) {
-
-
-
 
                 callback.onSendRequestSuccess(response);
             }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="Orientation,UselessParent"
+        android:background="#fff"
+        android:id="@+id/Linear1"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,SpUsage"
+            android:textColor="#575757"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:textSize="21sp"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            tools:ignore="HardcodedText,RtlHardcoded"
+            android:textColor="#7c7c7c"
+            android:textSize="21sp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:id="@+id/button1"
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/dqaweekly_ic_more_arrow"
+            android:focusable="false"
+            tools:ignore="RtlHardcoded" />
+
+    </LinearLayout>
+
+</RelativeLayout>
