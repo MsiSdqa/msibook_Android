@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".msibook_request_add">
+
+
+<android.support.design.widget.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:paddingTop="@dimen/appbar_padding_top"
+    android:theme="@style/request_AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentInsetEnd="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/request_PopupOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:ignore="UselessLeaf">
+
+            <TextView
+                android:id="@+id/textView223"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:id="@+id/main_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:text="新增認證"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText,InefficientWeight" />
+
+            <TextView
+                android:id="@+id/textview_attach_file"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+</android.support.design.widget.AppBarLayout>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@+id/linear_sent"
+    android:layout_below="@+id/appbar"
+    android:background="#111113">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="專案"
+                    android:textColor="#e31e25"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/facility_btn_reservation_dropdown"
+                    android:backgroundTint="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="類別項目"
+                    android:textColor="#e31e25"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/facility_btn_reservation_dropdown"
+                    android:backgroundTint="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="說明"
+                    android:textColor="#e31e25"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editText_Content"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#1c1b1e"
+                    android:ems="10"
+                    android:hint="點此輸入文字"
+                    android:inputType="textMultiLine"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#404040" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_case_officer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="承辦人"
+                    android:textColor="#e31e25"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView201"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="劉慶忠"
+                    android:textColor="#6d7073"
+                    android:textSize="21sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_case_officer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@mipmap/facility_btn_reservation_dropdown"
+                    android:backgroundTint="#ffffff"
+                    android:padding="5dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rec_view_file"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+</FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear_sent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#e7222b"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView225"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="送出"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>
