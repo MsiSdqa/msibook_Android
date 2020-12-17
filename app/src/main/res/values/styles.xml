@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/ActionBar_Background</item>
-        <item name="colorPrimaryDark">@color/ActionBar_Background</item>
-        <item name="colorAccent">@color/ActionBar_Background</item>
+        <item name="colorPrimary">@color/Msibook_Background</item>
+        <item name="colorPrimaryDark">@color/Msibook_Background</item>
+        <item name="colorAccent">@color/Msibook_Background</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
@@ -22,7 +22,6 @@
     </style>
 
     <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
-
 
 
     </style>
@@ -48,6 +47,7 @@
         <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
+
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?android:textColorSecondary</item>
@@ -72,14 +72,87 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="dqaweekly_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="dqaweekly_AppTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="actionOverflowButtonStyle">@style/OverFlow</item>
+    </style>
+
+    <style name="OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@mipmap/dqaweekly_btn_report_filter</item>
+    </style>
+
     <!---週報end-->
+
+    <!---實驗室-->
+    <style name="Facility_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
+
+    <style name="Facility_Theme.MyDialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="date_picker" parent="@android:style/Theme.Holo.Light">
+        <item name="colorControlNormal">@drawable/facility_dialog_divider</item>
+    </style>
+
+    <!--認證-->
+    <style name="Certified_Theme.MyDialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!--認證End-->
+    <!--<style name="MyTimePickerWidgetStyle" parent="timepicker">-->
+    <!--<item name="android:headerBackground">#ffe082</item>-->
+    <!--<item name="android:numbersTextColor">#b71c1c</item>-->
+    <!--<item name="android:numbersInnerTextColor">#f44336</item>-->
+    <!--<item name="android:numbersSelectorColor">#33691e</item>-->
+    <!--<item name="android:numbersBackgroundColor">#ef9a9a</item>-->
+    <!--<item name="android:amPmTextColor">#9c27b0</item>-->
+    <!--</style>-->
+
+    <!---實驗室end-->
 
     <!--eHR Use-->
 
-    <style name="eHR_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" ></style>
+    <style name="eHR_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
 
     <style name="eHR_PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
 
     <!---eHR Use-->
+
+    <!--request Use-->
+
+    <style name="request_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
+
+    <style name="request_PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
+
+    <!---request Use-->
+
+
+    <!--msibook  Use-->
+    <declare-styleable name="AlignedTextView">
+        <attr name="atv_marginAndPaddingOfLeftRight" format="dimension"/>
+        <attr name="atv_lineSpacingExtra" format="dimension"/>
+        <attr name="atv_offset" format="dimension"/>
+        <attr name="atv_textSize" format="dimension"/>
+        <attr name="atv_textColor" format="color"/>
+    </declare-styleable>
+
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@mipmap/rd_btn_new_worklog_dropdown</item>
+    </style>
+
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the search icon -->
+        <item name="searchIcon">@mipmap/certified_btn_search_certified</item>
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="queryBackground">@color/white</item>
+        <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="searchHintIcon">@null</item>
+        <!-- The hint text that appears when the user has not typed anything -->
+        <item name="queryHint">@string/search_hint</item>
+    </style>
 
 </resources>

@@ -45,6 +45,7 @@ public class msibook_store_account extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.ServicePath + "/Find_Store_Point";
 
         Map<String, String> map = new HashMap<String, String>();

@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                android:textColor="#656565"
+                android:textColor="#212121"
                 android:textSize="21sp"
                 tools:ignore="HardcodedText" />
 

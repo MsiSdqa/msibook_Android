@@ -372,6 +372,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
             map.put("WorkID", WorkID);
             map.put("CloseType", CloseType);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Close_Issue";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -415,7 +416,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
                 mQueue = Volley.newRequestQueue(mContext);
             }
 
-
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/C_Comment_Insert";
 
 
@@ -548,6 +549,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
             map.put("IssueID", IssueID);
             map.put("Priority", Priority);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Change_Issue_Priority";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -605,6 +607,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
 
                         _IssueFile = new File(FileItem.GetImagePath());
 
+                        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
                         UploadIssueFile_File(GetServiceData.IMS_ServicePath + "/Upload_Issue_File_MultiPart", mQueue, _IssueFile, "");
                         break;
                     case Video:
@@ -612,6 +615,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
 
                         Upload_Issue_File(F_Keyin, F_Master_ID, VideoFileUpload.getName());
 
+                        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
                         UploadIssueFile_File(GetServiceData.IMS_ServicePath + "/Upload_Issue_File_MultiPart", mQueue, VideoFileUpload, "");
 
                         break;
@@ -620,6 +624,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
 
                         Upload_Issue_File(F_Keyin, F_Master_ID, _IssueFile.getName());
 
+                        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
                         UploadIssueFile_File(GetServiceData.IMS_ServicePath + "/Upload_Issue_File_MultiPart", mQueue, _IssueFile, "");
                         break;
 
@@ -638,7 +643,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
         if (mQueue == null) {
             mQueue = Volley.newRequestQueue(this);
         }
-
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.ServicePath + "/Upload_Issue_File?F_Keyin=" + F_Keyin + "&F_Master_ID=" + F_Master_ID + "&F_Master_Table=C_Comment&File=" + File;
 
 
@@ -725,7 +730,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
 
                 ImageFile = pictureFile;
 
-                Uri uri =  AppClass.GetFileURI(mContext,pictureFile);
+                Uri uri =  AppClass.GetFileURI(mContext,pictureFile,intentCamera);
                 // 設定檔案名稱
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                 // 啟動相機元件
@@ -790,7 +795,7 @@ public class msibook_ims_Issue_change_priority extends AppCompatActivity {
 
                     VideoFile = _VideoFile;
 
-                    Uri uri =  AppClass.GetFileURI(mContext,_VideoFile);
+                    Uri uri =  AppClass.GetFileURI(mContext,_VideoFile,takeVideoIntent);
                     // 設定檔案名稱
                     takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 

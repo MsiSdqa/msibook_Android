@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/textview_CName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="#212121"
+                android:textSize="27sp"
+                tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,SpUsage" />
+
+            <TextView
+                android:id="@+id/textview_Column1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="#212121"
+                android:textSize="27sp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
+
+            <Button
+                android:id="@+id/adpbtn_H"
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/dqaweekly_ic_hrs"
+                android:focusable="false"
+                tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded" />
+
+            <Button
+                android:id="@+id/button"
+
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/dqaweekly_ic_more_arrow"
+                android:focusable="false"
+                tools:ignore="RtlHardcoded" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView251"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c7c7cc" />
+    </LinearLayout>
+
+</RelativeLayout>

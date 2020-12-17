@@ -118,6 +118,7 @@ public class msibook_rss_add extends AppCompatActivity {
         map.put("WorkHour", WorkHour);
         map.put("Subject", Subject);
         map.put("Comment", Comment);
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.ServicePath + "/Insert_RSS_Report_MsiBook";
 
         GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {

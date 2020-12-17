@@ -74,6 +74,7 @@ public class msibook_ims_issue_worknote_adapter extends BaseAdapter {
         msibook_ims_issue_video_play IssueVideoPlay = (msibook_ims_issue_video_play) v.findViewById(R.id.IssueVideoPlay);
         msibook_ims_issue_voice_play IssueVoicePlay = (msibook_ims_issue_voice_play) v.findViewById(R.id.IssueVoicePlay);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         final String FilePath = GetServiceData.ServicePath + "/Get_File?FileName=" + WorkNote_List.get(position).GetFile();
 
 

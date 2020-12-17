@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@android:color/background_light"
+tools:context=".msibook_dqaweekly_project_activity">
+
+
+    <RelativeLayout
+        android:id="@+id/relative_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#d21e25"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/logo_msi"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@mipmap/dqaweekly_logo_msi"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:id="@+id/linear_spinnerdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_below="@id/logo_msi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="75dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_spinnerdp_back"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@mipmap/dqaweekly_btn_menu_left"
+                tools:ignore="RtlHardcoded" />
+
+            <Spinner
+                android:id="@+id/spinner_depart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@mipmap/dqaweekly_btn_down_menu"
+                android:theme="@style/ThemeOverlay.AppCompat"
+                tools:ignore="InefficientWeight,MissingPrefix,ObsoleteLayoutParam,RtlHardcoded,UnusedAttribute" />
+
+            <Button
+                android:id="@+id/btn_spinnerdp_next"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@mipmap/dqaweekly_btn_menu_right"
+                tools:ignore="RtlHardcoded" />
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frame1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linear_spinnerdp"
+            android:background="#e2e2e2"
+            android:visibility="gone"
+            tools:ignore="NotSibling,UselessLeaf">
+
+            <LinearLayout
+                android:id="@+id/Lnl_Panel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/background_light"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/dqaweekly_border"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView36"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="5dp"
+                        android:text="專案資源分配"
+                        android:textColor="@color/dqaweekly_resource"
+                        android:textSize="18sp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/seekBar1"
+                        android:paddingTop="20dp"
+
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="8dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Lnl_Human_Resource"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/dqaweekly_border"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView28"
+                            android:layout_width="217dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:paddingLeft="5dp"
+                            android:text="人力資源稼動率"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/dqaweekly_resource"
+                            android:textSize="18sp" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/chart2"
+                            android:layout_width="220dp"
+                            android:layout_height="155dp"
+                            android:layout_above="@+id/seekBar1"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="0.08" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@drawable/dqaweekly_border"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingRight="5dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text_setresourcenum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:paddingRight="10dp"
+                                android:paddingTop="50dp"
+                                android:text="195"
+                                android:textAlignment="center"
+                                android:textColor="#656565"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/text_setresource"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="10dp"
+                                android:text="編制"
+                                android:textAlignment="center"
+                                android:textColor="#959494"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/text_realresourcenum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:text="219"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/textreal_resource"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="10dp"
+                                android:text="實際"
+                                android:textAlignment="center"
+                                android:textColor="#959494"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|right"
+                            android:orientation="horizontal"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="5dp">
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@mipmap/dqaweekly_btn_moreinfo1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <Spinner
+            android:id="@+id/spinner_week"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/logo_msi"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@mipmap/dqaweekly_btn_down_menu"
+            android:elevation="0dp"
+            tools:ignore="RtlHardcoded,UnusedAttribute" />
+
+        <TextView
+            android:id="@+id/textView123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#fff"
+            android:textColor="@android:color/background_dark"
+            android:textSize="40dp"
+            tools:ignore="RelativeOverlap,SpUsage" />
+
+        <Button
+            android:id="@+id/btn_creat_pop"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/spinner_week"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="3dp"
+            android:background="@mipmap/dqaweekly_ic_menu"
+            android:visibility="invisible"
+            tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_down"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative_up"
+        android:background="#e2e2e2">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="#ffffff"
+            app:tabIndicatorColor="#d21e25"
+            app:tabIndicatorHeight="5dp"
+            app:tabSelectedTextColor="#212121"
+            app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"
+            app:tabTextColor="#a3a3a3">
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabs1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff">
+
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="#ffffff"
+            app:tabIndicatorColor="#d21e25"
+            app:tabIndicatorHeight="5dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#212121"
+            app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"
+            app:tabTextColor="#a3a3a3">
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabs2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+
+</RelativeLayout>

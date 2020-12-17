@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main_content"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+android:fitsSystemWindows="true"
+tools:context=".msibook_dqaweekly_summary_talk_list">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#d21e25"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/dqaweekly_logo_msi"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@mipmap/dqaweekly_logo_msi"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView_week"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/dqaweekly_logo_msi"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView_dptname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/dqaweekly_logo_msi"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnknownId" />
+
+        <Button
+            android:id="@+id/btn_open_pop"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/textView_week"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/dqaweekly_ic_menu"
+            android:visibility="invisible"
+            tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+        <FrameLayout
+            android:id="@+id/frame1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linear_sent_message"
+            android:layout_below="@+id/textView_dptname"
+            android:background="#e2e2e2"
+            tools:ignore="NotSibling,UselessLeaf">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <LinearLayout
+                    android:id="@+id/main_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linear_action_item_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_CreateDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_alignParentBottom="false"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="#adb3ba"
+                            android:textSize="15sp"
+                            tools:ignore="HardcodedText,InefficientWeight,ObsoleteLayoutParam,RtlHardcoded" />
+
+                        <Button
+                            android:id="@+id/btn_edit"
+                            android:layout_width="30dp"
+                            android:layout_height="15dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@mipmap/dqaweekly_btn_common_edit_arrow"
+                            android:focusable="false"
+                            tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,SpUsage" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_Content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="#656565"
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,UnknownIdInLayout" />
+
+                    <LinearLayout
+                        android:id="@+id/linear_sum_item_end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_lookmessage"
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@mipmap/dqaweekly_btn_actionitems_dialogue"
+                            android:focusable="false"
+                            tools:ignore="RtlHardcoded" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listview_response"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/main_message"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#ffffff"
+                    android:divider="#f1f1f1"
+                    android:dividerHeight="5dp"
+                    tools:ignore="NestedScrolling,ScrollViewSize" />
+
+            </RelativeLayout>
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_sent_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#e2e2e2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText_sent_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="留言..."
+                android:inputType="textPersonName"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="#000000"
+                android:textColorHint="#b6b9c2"
+                android:textSize="21sp"
+                tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded" />
+
+            <Button
+                android:id="@+id/button_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#d21e25"
+                android:text="Send"
+                android:textColor="#ffffff"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

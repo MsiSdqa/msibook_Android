@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_element"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d21e25"
+    tools:context=".msibook_dqaweekly_summary_add">
+
+    <LinearLayout
+        android:id="@+id/Linear_Top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/btn_closepop"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentTop="false"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
+                android:background="@mipmap/dqaweekly_btn_common_close"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/textView_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical|center"
+                android:textColor="#ffffff"
+                android:textSize="27sp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btn_save_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/dqaweekly_btn_up_summary_save"
+                android:text="儲存"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                tools:ignore="ButtonStyle,HardcodedText,ObsoleteLayoutParam,RtlHardcoded" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/txt_summary_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Linear_Bottom"
+        android:layout_below="@+id/Linear_Top"
+        android:background="#ffffff"
+        android:ems="10"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:textColor="#000000"
+        android:textColorHint="#b6b9c2"
+        android:textSize="21sp"
+        tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,UnknownId" />
+
+
+</RelativeLayout>

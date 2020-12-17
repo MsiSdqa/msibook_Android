@@ -2,42 +2,167 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelayout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#f7f8fa"
     tools:context="dqa.com.msibook.msibook_ehr_new_job_add">
 
-    <TextView
-        android:id="@+id/textView_title"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:text="eHR 新增內轉職缺"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:layout_height="wrap_content"
+        android:theme="@style/eHR_AppBarOverlay">
 
-    <ScrollView
-        android:id="@+id/scrollview1"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:weightSum="1"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/eHR_PopupOverlay">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_creat_pop"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_alignBottom="@+id/toolbar_title"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:visibility="invisible"
+                    tools:ignore="HardcodedText,ObsoleteLayoutParam,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="新增內轉職務"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText,InefficientWeight" />
+
+                <Button
+                    android:id="@+id/btn_add_new_job"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:visibility="invisible"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:tabIndicatorColor="#ffffff"
+            app:tabIndicatorHeight="5dp"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed"
+            app:tabPaddingBottom="10dp"
+            app:tabSelectedTextColor="#ffffff"
+            app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"
+            app:tabTextColor="#afd5fe" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_need_dpt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/linear_bottom"
-        android:layout_below="@+id/textView_title"
-        android:background="#111113">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:background="#f7f8fa"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:orientation="vertical">
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="需求部門＊"
+                android:textColor="#363636"
+                android:textSize="21sp" />
+
+            <Button
+                android:id="@+id/btn_refresh_db"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:background="@mipmap/ehr_btn_update_dpt" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText_dpt_Name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ehr_edittext_bg"
+            android:ems="10"
+            android:hint="請輸入 : (Ex : 7870 設計品質驗證三部)"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#828795" />
+
+        <ListView
+            android:id="@+id/search_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#eeeeee"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linear_bottom"
+        android:layout_below="@+id/linear_need_dpt"
+        android:background="#f7f8fa">
+
+        <LinearLayout
+            android:id="@+id/linear_add_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/textView71"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="職稱"
-                android:textColor="#e9191f"
+                android:layout_marginTop="15dp"
+                android:text="職稱＊"
+                android:textColor="#363636"
                 android:textSize="21sp" />
 
             <EditText
@@ -45,125 +170,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:background="#1c1b1e"
+                android:background="@drawable/ehr_edittext_bg"
                 android:ems="10"
                 android:hint="請輸入 : (Ex : 電源設計工程師)"
                 android:inputType="textPersonName"
-                android:textColor="#ffffff"
-                android:textColorHint="#bbbac0" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:text="職等要求"
-                android:textColor="#e9191f"
-                android:textSize="21sp" />
-
-            <TextView
-                android:id="@+id/textView_job_level_set"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="預設 : 不拘 (點此設定)"
-                android:textColor="#bbbac0"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView102"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="介於(含)"
-                    android:textColor="#bbbac0"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_job_base"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/textView101"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="到(含)"
-                    android:textColor="#bbbac0"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_job_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="之間"
-                    android:textColor="#bbbac0"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
+                android:textColor="#000000"
+                android:textColorHint="#828795" />
 
             <TextView
                 android:id="@+id/textView36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="工作內容"
-                android:textColor="#e9191f"
+                android:layout_marginTop="15dp"
+                android:text="工作內容＊"
+                android:textColor="#363636"
                 android:textSize="21sp" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editText_Job_Content"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
-                android:background="#1c1b1e"
+                android:background="@drawable/ehr_edittext_bg"
                 android:ems="10"
                 android:hint="請輸入 : \n(Ex : \n1. 電源電路的規劃,設計,佈線與軟體模擬\n2. 電源電路問題的偵錯,追蹤與解決方案提供)\n"
                 android:inputType="textMultiLine"
-                android:textColor="#ffffff"
-                android:textColorHint="#bbbac0" />
+                android:textColor="#000000"
+                android:textColorHint="#828795" />
 
             <TextView
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:text="面試人員"
-                android:textColor="#e9191f"
+                android:textColor="#363636"
                 android:textSize="21sp" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/editText_Job_InterView"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:background="#1c1b1e"
+                android:background="@drawable/ehr_edittext_bg"
                 android:ems="10"
                 android:hint="請輸入 : (Ex : 陳俞兆 #1838)"
                 android:inputType="textPersonName"
-                android:textColor="#ffffff"
-                android:textColorHint="#bbbac0" />
+                android:textColor="#000000"
+                android:textColorHint="#828795" />
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:text="性別"
-                android:textColor="#e9191f"
+                android:textColor="#363636"
                 android:textSize="21sp" />
 
             <LinearLayout
@@ -172,30 +234,227 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButton"
+                <RadioGroup
+                    android:id="@+id/radioGroup1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#9fa0a1"
-                    android:scaleX="1.3"
-                    android:scaleY="1.3"
-                    android:text="男"
-                    android:textColor="#e9191f"
-                    android:textSize="18sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
+                    <RadioButton
+                        android:id="@+id/radioButton_Job_gender0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/ehr_radio_button_selector"
+                        android:buttonTint="#bbbac0"
+                        android:scaleX="1.3"
+                        android:scaleY="1.3"
+                        android:text="不拘"
+                        android:textColor="#828795"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_Job_gender1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/ehr_radio_button_selector"
+                        android:buttonTint="#bbbac0"
+                        android:scaleX="1.3"
+                        android:scaleY="1.3"
+                        android:text="男"
+                        android:textColor="#828795"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_Job_gender2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/ehr_radio_button_selector"
+                        android:buttonTint="#bbbac0"
+                        android:scaleX="1.3"
+                        android:scaleY="1.3"
+                        android:text="女"
+                        android:textColor="#828795"
+                        android:textSize="18sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewline1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#828795" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="職等"
+                android:textColor="#363636"
+                android:textSize="21sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_Job_Level_Base"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ehr_edittext_bg"
+                    android:ems="10"
+                    android:hint="[不拘]"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textColorHint="#828795" />
+
+                <TextView
+                    android:id="@+id/textView102"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:buttonTint="#9fa0a1"
-                    android:scaleX="1.3"
-                    android:scaleY="1.3"
-                    android:text="女"
-                    android:textColor="#e9191f"
-                    android:textSize="18sp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="25dp"
+                    android:text="以上"
+                    android:textColor="#363636"
+                    android:textSize="21sp" />
+
+                <EditText
+                    android:id="@+id/editText_Job_Level_Top"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ehr_edittext_bg"
+                    android:ems="10"
+                    android:hint="[不拘]"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textColorHint="#828795" />
+
+                <TextView
+                    android:id="@+id/textView101"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="以下"
+                    android:textColor="#363636"
+                    android:textSize="21sp" />
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewline2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#828795" />
+
+            <TextView
+                android:id="@+id/textView100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="年齡要求"
+                android:textColor="#363636"
+                android:textSize="21sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_Job_Age_Base"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ehr_edittext_bg"
+                    android:ems="10"
+                    android:hint="[不拘]"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textColorHint="#828795" />
+
+                <TextView
+                    android:id="@+id/textView104"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="25dp"
+                    android:text="以上"
+                    android:textColor="#363636"
+                    android:textSize="21sp" />
+
+                <EditText
+                    android:id="@+id/editText_Job_Age_Top"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ehr_edittext_bg"
+                    android:ems="10"
+                    android:hint="[不拘]"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textColorHint="#828795" />
+
+                <TextView
+                    android:id="@+id/textView105"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="以下"
+                    android:textColor="#363636"
+                    android:textSize="21sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewline3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#828795" />
+
+            <TextView
+                android:id="@+id/textView103"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="需求人數＊"
+                android:textColor="#363636"
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/editText_Job_People"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ehr_edittext_bg"
+                android:ems="10"
+                android:hint="請輸入 : (Ex : 6)"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#828795" />
 
         </LinearLayout>
     </ScrollView>
@@ -209,21 +468,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView99"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/ehr_btn_background_up"
-            android:gravity="center"
-            android:text="暫存"
-            android:textColor="#ffffff"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/textView98"
-            android:layout_width="80dp"
+            android:id="@+id/textView_sent"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="30dp"
@@ -236,9 +482,9 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView97"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textview_goto_bottom"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
         android:layout_above="@+id/linear_bottom"
         android:layout_alignParentBottom="false"
         android:layout_alignParentEnd="true"

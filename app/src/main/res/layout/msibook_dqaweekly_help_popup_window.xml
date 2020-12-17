@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:id="@+id/popup_element"
-    android:background="@android:color/background_dark">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#c7c7cc">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="2dp"
         android:background="@mipmap/dqaweekly_popup_help"
-        tools:ignore="UselessParent"
-        android:layout_margin="2dp">
+        tools:ignore="UselessParent">
 
         <Button
-            tools:ignore="HardcodedText,RtlHardcoded"
-            android:background="@mipmap/dqaweekly_btn_close"
             android:id="@+id/btn_closepop"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="3dp"
+            android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_width="30dp" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="5dp"
+            android:background="@mipmap/dqaweekly_btn_close"
+            tools:ignore="HardcodedText,RtlHardcoded" />
     </RelativeLayout>
 
 </RelativeLayout>

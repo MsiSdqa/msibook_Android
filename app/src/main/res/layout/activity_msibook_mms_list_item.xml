@@ -3,59 +3,87 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
-    android:gravity="center">
+    android:gravity="center"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/txt_Class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#333333"
-                android:textSize="21sp" />
+                android:layout_marginRight="10dp"
+                android:text="Bluetooth"
+                android:textColor="#212121"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txt_CreatDate"
+                android:id="@+id/textView198"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/mmc_red_bg"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_BrandName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:text="Chicony"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_AssetSN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="right"
-                android:textColor="#527da3"
-                android:textSize="15sp" />
+                android:textColor="#e7222b"
+                android:textSize="18sp" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/txt_Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:textColor="#656565"
-            android:textSize="21sp" />
+            android:layout_marginBottom="5dp"
+            android:textColor="#57585b"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txt_BrandName"
+            android:id="@+id/txt_CreatDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#656565"
-            android:textSize="21sp" />
+            android:gravity="right"
+            android:text="2018/08/17"
+            android:textColor="#57585b"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView_next"
-        android:layout_width="20dp"
-        android:layout_height="25dp"
+        android:layout_width="10dp"
+        android:layout_height="15dp"
         android:layout_marginRight="5dp"
-        />
+        android:background="@mipmap/workorder_btn_attachment_more"
+        android:visibility="gone" />
 </LinearLayout>

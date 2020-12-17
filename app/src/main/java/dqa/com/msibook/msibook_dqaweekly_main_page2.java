@@ -111,7 +111,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
             case "人力":
                 //執行Find_Man_Power副程式
                 Find_Man_Power(getEtraDepID);
-                title1.setText("人力");
+                title1.setText("編制");
 
                 break;
             case "工時":
@@ -152,7 +152,6 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
     //--------------------------------------------------------------------------------Void--------------------------------------------------------------------------------
     //DB編制細部清單
     private void Find_Man_Power(String DeptID) {
-
         //顯示  讀取等待時間Bar
         progressBar.show();
 
@@ -160,6 +159,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Find_Man_Power?DeptID=" + DeptID;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -167,7 +167,6 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
             public void onSuccess(JSONObject result) {
 
                 try {
-
                     JSONArray UserArray = new JSONArray(result.getString("Key"));
 
                     for (int i = 0; i < UserArray.length(); i++) {
@@ -180,7 +179,6 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                         String WorkID = String.valueOf(IssueData.getString("WorkID"));
 
                         Detail_Item_List.add(i,new Detail_Item(CName,title,WorkID,"",""));
-
                     }
 
                     mListView = (ListView)findViewById(R.id.list2);
@@ -192,30 +190,19 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                     //關閉-讀取等待時間Bar
                     progressBar.dismiss();
 
-//                    //編制細項to 第三頁
-//                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                            Intent intent = new Intent();
-//
-//                            intent.setClass(Main2Activity.this, Main3Activity.class);
-//                            //開啟Activity
-//                            startActivity(intent);
-//
-//
-//                        }
-//                    });
+                    //編制細項to 第三頁
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        }
+                    });
                 }
                 catch (JSONException ex) {
-
                     Log.w("Json",ex.toString());
                 }
-
             }
         });
-
-
     }
     //DB加班細部清單
     private void Find_Over_Hour(String DeptID,String Year,String Week) {
@@ -226,6 +213,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Find_Over_Hour?DeptID=" + DeptID + "&Year=" + Year + "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -268,30 +256,30 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                     progressBar.dismiss();
 
                     //加班細項to 第三頁
-//                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                            Intent intent = new Intent();
-//
-//                            intent.putExtra("m2Week", m2putEtrawk);//給第三頁Week
-//
-//                            intent.putExtra("m2ChoiceDepID", m2putEtraDepID);//給第三頁部門代號
-//
-//                            intent.putExtra("m2ChoiceYear", m2putEtraYear);//給第三頁部門代號
-//
-//                            intent.putExtra("m2putTitle", m2putTitle);//給第三頁部門名稱
-//
-//                            intent.putExtra("m2Rowtype",MainTitle);//給第三頁 選擇的 Type  EX 加班OR請假
-//
-//                            //intent.putExtra("Mantitle",DetailAdapter.Detail_Item_List.get(position).Gettitle());
-//                            intent.putExtra("Mantitle",Detail_Item_List.get(position).GetName());
-//                            intent.putExtra("Mannumber",Detail_Item_List.get(position).GetWorkID());//給第三頁員工 工號
-//                            intent.setClass(msibook_dqaweekly_main_page2.this, Main3Activity.class);
-//                            //開啟Activity
-//                            startActivity(intent);
-//                        }
-//                    });
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Intent intent = new Intent();
+
+                            intent.putExtra("m2Week", m2putEtrawk);//給第三頁Week
+
+                            intent.putExtra("m2ChoiceDepID", m2putEtraDepID);//給第三頁部門代號
+
+                            intent.putExtra("m2ChoiceYear", m2putEtraYear);//給第三頁部門代號
+
+                            intent.putExtra("m2putTitle", m2putTitle);//給第三頁部門名稱
+
+                            intent.putExtra("m2Rowtype",MainTitle);//給第三頁 選擇的 Type  EX 加班OR請假
+
+                            //intent.putExtra("Mantitle",DetailAdapter.Detail_Item_List.get(position).Gettitle());
+                            intent.putExtra("Mantitle",Detail_Item_List.get(position).GetName());
+                            intent.putExtra("Mannumber",Detail_Item_List.get(position).GetWorkID());//給第三頁員工 工號
+                            intent.setClass(msibook_dqaweekly_main_page2.this, msibook_dqaweekly_main_page3.class);
+                            //開啟Activity
+                            startActivity(intent);
+                        }
+                    });
 
                 }
                 catch (JSONException ex) {
@@ -315,6 +303,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Find_Leave_List?DeptID=" + DeptID + "&Year=" + Year + "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -350,31 +339,31 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                     progressBar.dismiss();
 
                     //加班細項to 第三頁
-//                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                            Intent intent = new Intent();
-//
-//                            intent.putExtra("m2Week", m2putEtrawk);//給第三頁Week
-//
-//                            intent.putExtra("m2ChoiceDepID", m2putEtraDepID);//給第三頁部門代號
-//
-//                            intent.putExtra("m2ChoiceYear", m2putEtraYear);//給第三頁部門代號
-//
-//                            intent.putExtra("m2putTitle", m2putTitle);//給第三頁部門名稱
-//
-//                            intent.putExtra("m2Rowtype",MainTitle);//給第三頁 選擇的 Type  EX 加班OR請假
-//
-//                            //intent.putExtra("Mantitle",DetailAdapter.Detail_Item_List.get(position).Gettitle());
-//                            intent.putExtra("Mantitle",Detail_Item_List.get(position).GetName());
-//                            intent.putExtra("Mannumber",Detail_Item_List.get(position).GetF_ID());//給第三頁員工 工號
-//
-//                            intent.setClass(msibook_dqaweekly_main_page2.this, Main3Activity.class);
-//                            //開啟Activity
-//                            startActivity(intent);
-//                        }
-//                    });
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Intent intent = new Intent();
+
+                            intent.putExtra("m2Week", m2putEtrawk);//給第三頁Week
+
+                            intent.putExtra("m2ChoiceDepID", m2putEtraDepID);//給第三頁部門代號
+
+                            intent.putExtra("m2ChoiceYear", m2putEtraYear);//給第三頁部門代號
+
+                            intent.putExtra("m2putTitle", m2putTitle);//給第三頁部門名稱
+
+                            intent.putExtra("m2Rowtype",MainTitle);//給第三頁 選擇的 Type  EX 加班OR請假
+
+                            //intent.putExtra("Mantitle",DetailAdapter.Detail_Item_List.get(position).Gettitle());
+                            intent.putExtra("Mantitle",Detail_Item_List.get(position).GetName());
+                            intent.putExtra("Mannumber",Detail_Item_List.get(position).GetF_ID());//給第三頁員工 工號
+
+                            intent.setClass(msibook_dqaweekly_main_page2.this, msibook_dqaweekly_main_page3.class);
+                            //開啟Activity
+                            startActivity(intent);
+                        }
+                    });
                 }
                 catch (JSONException ex) {
 
@@ -393,6 +382,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Find_Week_Project?DeptID=" + DeptID + "&Year=" + Year + "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -432,31 +422,31 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                     progressBar.dismiss();
 
                     //專案細項to 第三頁
-//                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                            Intent intent = new Intent();
-//
-//                            intent.putExtra("m2Week", m2putEtrawk);//給第三頁Week
-//
-//                            intent.putExtra("m2ChoiceDepID", m2putEtraDepID);//給第三頁部門代號
-//
-//                            intent.putExtra("m2ChoiceYear", m2putEtraYear);//給第三頁部門代號
-//
-//                            intent.putExtra("m2putTitle", m2putTitle);//給第三頁部門名稱
-//
-//                            intent.putExtra("m2Rowtype",MainTitle);//給第三頁 選擇的 Type  EX 加班OR請假OR專案
-//
-//                            intent.putExtra("Mantitle",Week_Project_Item_list.get(position).GetF_Map());//給第三頁 Title EX:MP、EVT、DVT
-//                            intent.putExtra("m2ModelList",Week_Project_Item_list.get(position).GetModelList());//給第三頁 MS-7A61  MS-7A81
-//                            intent.putExtra("m2ModelIDList",Week_Project_Item_list.get(position).GetModelIDList());//給第三頁 12637  12638
-//
-//                            intent.setClass(msibook_dqaweekly_main_page2.this, Main3Activity.class);
-//                            //開啟Activity
-//                            startActivity(intent);
-//                        }
-//                    });
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Intent intent = new Intent();
+
+                            intent.putExtra("m2Week", m2putEtrawk);//給第三頁Week
+
+                            intent.putExtra("m2ChoiceDepID", m2putEtraDepID);//給第三頁部門代號
+
+                            intent.putExtra("m2ChoiceYear", m2putEtraYear);//給第三頁部門代號
+
+                            intent.putExtra("m2putTitle", m2putTitle);//給第三頁部門名稱
+
+                            intent.putExtra("m2Rowtype",MainTitle);//給第三頁 選擇的 Type  EX 加班OR請假OR專案
+
+                            intent.putExtra("Mantitle",Week_Project_Item_list.get(position).GetF_Map());//給第三頁 Title EX:MP、EVT、DVT
+                            intent.putExtra("m2ModelList",Week_Project_Item_list.get(position).GetModelList());//給第三頁 MS-7A61  MS-7A81
+                            intent.putExtra("m2ModelIDList",Week_Project_Item_list.get(position).GetModelIDList());//給第三頁 12637  12638
+
+                            intent.setClass(msibook_dqaweekly_main_page2.this, msibook_dqaweekly_main_page3.class);
+                            //開啟Activity
+                            startActivity(intent);
+                        }
+                    });
                 }
                 catch (JSONException ex) {
                     Log.w("Json",ex.toString());
@@ -474,6 +464,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Find_WorkHour?DeptID=" + DeptID + "&Year=" + Year + "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -511,18 +502,18 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                     //關閉-讀取等待時間Bar
                     progressBar.dismiss();
 
-//                    //工時細項to 第三頁
-//                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
+                    //工時細項to 第三頁
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 //                            Intent intent = new Intent();
 //
-//                            intent.setClass(Main2Activity.this, Main3Activity.class);
+//                            intent.setClass(msibook_dqaweekly_main_page2.this, msibook_dqaweekly_main_page3.class);
 //                            //開啟Activity
 //                            startActivity(intent);
-//                        }
-//                    });
+                        }
+                    });
                 }
                 catch (JSONException ex) {
                     Log.w("Json",ex.toString());
@@ -539,6 +530,7 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Find_Weekly_Content?DeptID=" + DeptID + "&F_Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -684,14 +676,16 @@ public class msibook_dqaweekly_main_page2 extends AppCompatActivity {
                     textView2.setTextColor(Color.parseColor("#f0625d"));
                 }else{
                     textView2.setText("當月 "+ Detail_Item_List.get(position).GetF_ID());
-                    textView2.setTextColor(Color.parseColor("#064472"));
+                    textView2.setTextColor(Color.parseColor("#ffffff"));
+                    //textView2.setTextColor(Color.parseColor("#064472"));
                 }
                 if (b > 40){
                     textView4.setText("當週 "+ Detail_Item_List.get(position).GetHour());
                     textView4.setTextColor(Color.parseColor("#f0625d"));
                 }else{
                     textView4.setText("當週 "+ Detail_Item_List.get(position).GetHour());
-                    textView4.setTextColor(Color.parseColor("#064472"));
+                    textView2.setTextColor(Color.parseColor("#ffffff"));
+                    //textView2.setTextColor(Color.parseColor("#064472"));
                 }
                 textView2.setTextSize(20);
                 textView4.setTextSize(20);

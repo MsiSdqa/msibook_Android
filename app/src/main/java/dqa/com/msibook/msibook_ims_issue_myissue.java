@@ -101,6 +101,7 @@ public class msibook_ims_issue_myissue extends AppCompatActivity {
         if (mQueue == null) {
             mQueue = Volley.newRequestQueue(msibook_ims_issue_myissue.this);
         }
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Find_My_Issue_List?F_Keyin=" + WorkID + "&DateRange=" + DateRange;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {

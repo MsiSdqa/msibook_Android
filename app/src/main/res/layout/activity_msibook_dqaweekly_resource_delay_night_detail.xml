@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main3_project_list_activity"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".msibook_dqaweekly_resource_delay_night_detail">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#d21e25"
+    tools:ignore="UselessParent">
+
+    <ImageView
+        android:id="@+id/dqaweekly_logo_msi"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@mipmap/dqaweekly_logo_msi"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/project_list_depart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dqaweekly_logo_msi"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="設計品質驗證部 - 台北"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnknownId" />
+
+    <FrameLayout
+        android:id="@+id/frame1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_list_depart"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView304"
+                android:layout_width="5dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:background="#d21e25" />
+
+            <TextView
+                android:id="@+id/project_list_listtop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="#212121"
+                android:textSize="21sp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/m3_project_frame2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frame1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="0dp"
+        android:background="#f4f4f4"
+        tools:ignore="NotSibling,ObsoleteLayoutParam,UnknownId,UnknownIdInLayout">
+
+        <ExpandableListView
+            android:id="@+id/lvExp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:divider="@null"
+            tools:ignore="RtlHardcoded" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/project_list_week"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewshowdepart"
+        android:layout_alignBottom="@+id/dqaweekly_logo_msi"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@+id/dqaweekly_logo_msi"
+        android:layout_toRightOf="@+id/dqaweekly_logo_msi"
+        android:elevation="0dp"
+        android:gravity="center"
+        android:paddingTop="0dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="21sp"
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage,UnknownIdInLayout,UnusedAttribute" />
+
+
+</RelativeLayout>
+
+</RelativeLayout>

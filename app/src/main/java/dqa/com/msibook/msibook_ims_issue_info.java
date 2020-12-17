@@ -312,7 +312,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
-
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Insert_Issue_Read_Advantage?F_Master_ID=" + F_Master_ID + "&F_Master_Table=" + "C_Issue" + "&F_Read=" + "1" + "&F_Keyin=" + F_Keyin;
 
         //System.out.println(File);
@@ -398,6 +398,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Issue_Comment_File_Insert?F_Keyin=" + F_Keyin + "&F_Master_ID=" + F_Master_ID + "&File=" + File;
 
         //System.out.println(File);
@@ -465,7 +466,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
                 mQueue = Volley.newRequestQueue(mContext);
             }
 
-
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/C_Comment_Insert";
 
 
@@ -550,6 +551,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Issue_File_List?F_SeqNo=" + Issue_ID;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -577,6 +579,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
 
                     JSONObject IssueData = IssueInfoFileArray.getJSONObject(i);
 
+                    HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
                     String F_DownloadFilePath = GetServiceData.IMS_ServicePath + "/Get_File?FileName=" + IssueData.getString("F_DownloadFilePath");
 
                     //if (F_DownloadFilePath.contains())
@@ -617,6 +620,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Issue_Get?F_SeqNo=" + Issue_ID;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -635,6 +639,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/GetIssue_Info?IssueID=" + Issue_ID;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -803,6 +808,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Find_Issue_Comment?Issue_ID=" + Issue_ID;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -1085,6 +1091,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             map.put("IssueID", IssueID);
             map.put("WorkID", WorkID);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Change_Issue_Owner";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -1126,6 +1133,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             map.put("IssueID", IssueID);
             map.put("Priority", Priority);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Change_Issue_Priority";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -1166,6 +1174,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             map.put("IssueNo", IssueID);
             map.put("WorkID", WorkID);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Verify_Issue";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -1206,6 +1215,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             Map<String, String> map = new HashMap<String, String>();
             map.put("IssueNo", IssueID);
             map.put("WorkID", WorkID);
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Reject_Verify_Issue";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -1245,6 +1255,7 @@ public class msibook_ims_issue_info extends AppCompatActivity {
             map.put("WorkID", WorkID);
             map.put("CloseType", CloseType);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Close_Issue";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {

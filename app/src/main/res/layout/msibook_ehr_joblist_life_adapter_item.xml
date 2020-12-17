@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#18171a">
+    android:background="#f7f8fa">
 
 
     <LinearLayout
@@ -24,30 +24,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:paddingTop="10dp"
-                android:text="電源設計助理工程師"
-                android:textColor="#ffffff"
+                android:text="部門名稱"
+                android:textColor="#212121"
                 android:textSize="21sp"
-                android:textStyle="bold"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <TextView
-                android:id="@+id/textView_create_date"
+                android:id="@+id/textView_date_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:paddingBottom="10dp"
                 android:text="2018-01-01"
-                android:textColor="#bbbac0"
+                android:textColor="#828795"
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <Switch
-            android:id="@+id/switch1"
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/switch_on_off"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Switch" />
+            android:layout_marginRight="15dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:textOff=""
+            android:textOn=""
+            android:thumb="@drawable/msibook_ehr_switch_thumb_custom"
+            android:track="@drawable/msibook_ehr_switch_on_off" />
 
     </LinearLayout>
 

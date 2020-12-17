@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "635051825535",
+    "firebase_url": "https://msibook-32789.firebaseio.com",
+    "project_id": "msibook-32789",
+    "storage_bucket": "msibook-32789.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635051825535:android:56f9292f31e5f8cc",
+        "android_client_info": {
+          "package_name": "dqa.com.msibook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635051825535-cqorajmh7du6i6to7q4a9cf2jdgrh11u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dqa.com.msibook",
+            "certificate_hash": "9bc829216aaa1ef9ce0d49cb3b0eb2503d421c7b"
+          }
+        },
+        {
+          "client_id": "635051825535-b5g3iun47kr8j7lnrs7vjhc0ku3u2aqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiK2UFZpGpSDDRdzt7noC68oyhp6zx9Fw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635051825535-n3kh955ma17g0qkp6ro7tb1tepmj1lku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.msi.dqabook"
+              }
+            },
+            {
+              "client_id": "635051825535-b5g3iun47kr8j7lnrs7vjhc0ku3u2aqm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -159,6 +159,7 @@ public class msibook_ims_Issue_change_owner extends AppCompatActivity {
             map.put("IssueID", IssueID);
             map.put("WorkID", WorkID);
 
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/Change_Issue_Owner";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -189,6 +190,7 @@ public class msibook_ims_Issue_change_owner extends AppCompatActivity {
             mQueue = Volley.newRequestQueue(mContext);
         }
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.IMS_ServicePath + "/Find_Model_Member?PM_ID=" + PM_ID;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -259,7 +261,7 @@ public class msibook_ims_Issue_change_owner extends AppCompatActivity {
                 mQueue = Volley.newRequestQueue(mContext);
             }
 
-
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.IMS_ServicePath + "/C_Comment_Insert";
 
 

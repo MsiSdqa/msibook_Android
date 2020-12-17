@@ -1,88 +1,755 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="dqa.com.msibook.MainPage"
     tools:showIn="@layout/app_bar_main_page">
 
 
-    <GridLayout
+    　　
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:columnCount="2"
-        android:rowCount="2">
-        　　
+        android:visibility="gone">
 
-        <Button
-            android:id="@+id/Btn_RSS"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/relative_eHR"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_eHR_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_ehr_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@mipmap/msibook_ic_msibook_ehr_permissiondenied" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ehr_ic_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_eHR_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="eHR"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_ehr_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignTop="@+id/linear_eHR_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_LAB"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_LAB_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_lab_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_laboratory_permissiondenied" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_lab_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_LAB_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="實驗室"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_lab_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_LAB_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_MMC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_MMC_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_mmc_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_assets_permissiondenied" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_mmc_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_MMC_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="資產管理"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_mmc_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_MMC_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/relative_request"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_request_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_request_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_workorder_permissiondenied" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_request_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_request_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="工單系統"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_request_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_request_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_requset_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_requset_form_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_requset_form_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_demandlist" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_requset_form_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_requset_form_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="需求單"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_requset_form_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_requset_form_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_dqaweekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_dqaweekly_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_dqaweekly_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_weekly_permissiondenied" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_dqaweekly_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_dqaweekly_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="週報"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_dqaweekly_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_dqaweekly_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/relative_PMS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linear_pms_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_pms_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/pms_ic_msibook_pms" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_pms_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_pms_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="PMS"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_pms_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_pms_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_IMS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_IMS_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_ims_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@mipmap/msibook_ic_msibook_ims" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_ims_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_IMS_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="問題管理"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_ims_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_IMS_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_certified"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_certified_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_certified_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_certified" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_certified_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_certified_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="認證系統"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_certified_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_certified_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/relative_overtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linaer_overtime_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_overtime_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_overtime" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_overtime_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linaer_overtime_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="出缺勤"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_overtime_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linaer_overtime_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_RSS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_RSS_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_rss_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_workreport" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_ic_rss_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_RSS_inside"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="工作報告"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_rss_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_RSS_inside"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_non1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:id="@+id/linear_non1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/msibook_main_linear_ic_bg_inside"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_non1_ic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:layout_margin="20dp"
+                            android:background="@mipmap/msibook_ic_msibook_certified_permissiondenied" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_non1_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear_non1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="認證系統"
+                        android:textColor="#3c3c52"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_non1_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linear_non1"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/msibook_main_badge_item_count"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d21e25"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="工作報告"
-            android:textSize="24sp" />
-        　　
+            android:contentInsetEnd="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/Facility_AppBarOverlay">
 
-        <Button
-            android:id="@+id/Btn_Resume"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="個人履歷表"
-            android:textSize="24sp" />
-        　　　
+            <TextView
+                android:id="@+id/main_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText,InefficientWeight" />
 
-        <Button
-            android:id="@+id/Btn_MMC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="資產管理"
-            android:textSize="24sp" />
-        　　
+        </android.support.v7.widget.Toolbar>
 
-        <Button
-            android:id="@+id/Btn_IMS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="IMS"
-            android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/Btn_Lab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="實驗室"
-            android:textSize="24sp" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs_title_icon"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#d21e25" />
 
-        <Button
-            android:id="@+id/Btn_dqaweekly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="週報"
-            android:textSize="24sp" />
+    </android.support.design.widget.AppBarLayout>
 
-        <Button
-            android:id="@+id/Btn_eHR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:text="eHR"
-            android:textAllCaps="false"
-            android:textSize="24sp" />
 
-    </GridLayout>
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar" />
+
+
+</RelativeLayout>

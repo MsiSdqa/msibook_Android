@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true"
-        android:background="#18171a"
+        android:background="#f7f8fa"
         android:gravity="center_vertical"
         tools:ignore="Orientation,UselessParent">
 
@@ -29,7 +29,7 @@
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:text="7861"
-            android:textColor="#bbbac0"
+            android:textColor="#828795"
             android:textSize="21sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,SpUsage" />
@@ -43,19 +43,18 @@
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:text="設計品質驗證二部一課"
-            android:textColor="#ffffff"
+            android:textColor="#212121"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/textView_people_count"
-            android:layout_width="50dp"
+            android:id="@+id/textView_job_count"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:gravity="center"
-            android:text="10"
-            android:textColor="#e9191f"
+            android:textColor="#d21e25"
             android:textSize="33sp" />
 
         <TextView

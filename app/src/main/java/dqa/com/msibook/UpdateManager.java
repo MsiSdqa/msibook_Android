@@ -12,9 +12,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,7 +50,7 @@ public class UpdateManager extends Activity {
     /* 下載包安裝路徑 */
     private static final String savePath = dir.getPath();
 
-    private static final String saveFileName = savePath + "/UpdateIMS.apk";
+    private static final String saveFileName = savePath + "/msiBook.apk";
     ;
 
     /* 進度條與通知ui刷新的handler和msg常量 */
@@ -143,6 +145,7 @@ public class UpdateManager extends Activity {
             }
         });
         downloadDialog = builder.create();
+        downloadDialog.setCancelable(false);
         downloadDialog.show();
 
         downloadApk();
@@ -210,7 +213,6 @@ public class UpdateManager extends Activity {
 
     private void installApk() {
 
-
         File apkfile = new File(saveFileName);
         if (!apkfile.exists()) {
             return;
@@ -218,24 +220,22 @@ public class UpdateManager extends Activity {
 
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
         intent.setAction(android.content.Intent.ACTION_VIEW);
-//        FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".my.package.name.provider", createImageFile());
-        ;
-
-        if(Build.VERSION.SDK_INT >=24) {
-
-            intent.setDataAndType( AppClass.GetFileURI(mContext,apkfile),
+// FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".my.package.name.provider", createImageFile());
+        Build.VERSION mBuild = new android.os.Build.VERSION();
+        Log.w("SDKSDK",String.valueOf(Build.VERSION.SDK_INT));
+        if(Build.VERSION.SDK_INT < 24) {
+            //Toast.makeText(mContext, "FKQ", Toast.LENGTH_SHORT).show();
+            intent.setDataAndType(Uri.fromFile(apkfile),
                     "application/vnd.android.package-archive");
         } else {
-            intent.setDataAndType(FileProvider.getUriForFile(mContext,mContext.getApplicationContext().getPackageName()+ ".com.apps.ims.provider",apkfile),
-                    "application/vnd.android.package-archive");
+            //Toast.makeText(mContext, "SHIT YOU", Toast.LENGTH_SHORT).show();
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(FileProvider.getUriForFile(mContext, mContext.getApplicationContext().getPackageName() + ".dqa.com.msibook.fileprovider", apkfile),"application/vnd.android.package-archive");
         }
 
         mContext.startActivity(intent);
-
-
-
 
     }
 }

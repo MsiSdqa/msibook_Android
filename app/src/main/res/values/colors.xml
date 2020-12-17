@@ -9,6 +9,7 @@
 
     <!--ActionBar-->
     <color name="ActionBar_Background">#2196f3</color>
+    <color name="Msibook_Background">#d21e25</color>
     <!--Login-->
     <color name="Banner_Font">#FFFFFF</color>
     <color name="Banner_Background">#2196f3</color>
@@ -87,6 +88,26 @@
 
     <!--Project List-->
     <color name="ProjectList_Favorit">#f3f3f3</color>
+
+    <!--Date & time picker-->
+    <color name="Datepicker_use">#e7222b</color>
+
+    <color name="dqaweekly_resource">#535353</color>
+
+    <color name="chartbarColor">#d21e25</color>
+    <color name="chartvalueColor">#212121</color>
+    <color name="chartxlabelColor">#212121</color>
+    <color name="chartnoneColorColor">#ffffff</color>
+
+    <color name="chartbarColor_project1">#d21e25</color>
+    <color name="chartbarColor_project2">#f66b71</color>
+    <color name="chartvalueColor_project1">#535353</color>
+    <color name="chartvalueColor_project2">#535353</color>
+
+    <color name="Request_Form_chartxlabelColor">#ffffff</color>
+    <color name="Request_Form_chart_ValueColor">#57585b</color>
+
+    <color name="red">#e7222b</color>
 
 </resources>
 

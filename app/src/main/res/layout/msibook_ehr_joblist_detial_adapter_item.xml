@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true"
-        android:background="#18171a"
+        android:background="#f7f8fa"
         android:gravity="center_vertical"
         tools:ignore="Orientation,UselessParent">
 
@@ -23,14 +23,14 @@
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:text="電源設計助理工程師"
-            android:textColor="#ffffff"
+            android:textColor="#212121"
             android:textSize="21sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
             android:id="@+id/textView_apply"
-            android:layout_width="130dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:background="@drawable/ehr_apply_job_enable"
@@ -40,6 +40,13 @@
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_icon"
+            android:layout_width="13dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/ehr_btn_common_nextarrow" />
 
     </LinearLayout>
 

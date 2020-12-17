@@ -2,6 +2,9 @@ package dqa.com.msibook;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -224,6 +227,7 @@ public class AppClass {
         map.put("Tag", Tag);
         map.put("Key", Key);
         map.put("Value", Value);
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.ServicePath + "/SendPushNotificationDeviceByWorkID";
 
         GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -252,6 +256,7 @@ public class AppClass {
             map.put("Tag", Tag);
             map.put("Key", Key);
             map.put("Value", Value);
+            HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
             String Path = GetServiceData.ServicePath + "/SendPushNotificationDeviceByWorkID";
 
             GetServiceData.SendPostRequest(Path, mQueue, new GetServiceData.VolleyStringCallback() {
@@ -303,6 +308,7 @@ public class AppClass {
 
 
         // Retrieves an image specified by the URL, displays it in the UI.
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         ImageRequest request = new ImageRequest(GetServiceData.ServicePath + "/Get_File?FileName=" + PhotoDataItem.photo_downloadPath,
                 new Response.Listener<Bitmap>() {
                     @Override
@@ -341,6 +347,7 @@ public class AppClass {
 
         Map<String, String> map = new HashMap<String, String>();
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.ServicePath + "/Get_Server_All_Image";
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -425,9 +432,19 @@ public class AppClass {
         Log.w("eeeeeeeeeeeeeeeeee", String.valueOf(WebPhotoList.size()));
     }
 
-    public static Uri GetFileURI(Context mContext,File FileName)
+    public static Uri GetFileURI(Context mContext,File FileName,Intent intent)
     {
-      return  FileProvider.getUriForFile(mContext,mContext.getApplicationContext().getPackageName() + ".dqa.com.msibook.provider",FileName);
+//      return  FileProvider.getUriForFile(mContext,mContext.getApplicationContext().getPackageName() + ".dqa.com.msibook.provider",FileName);
+        Uri FilePath = FileProvider.getUriForFile(mContext,mContext.getApplicationContext().getPackageName() + ".dqa.com.msibook.fileprovider",FileName);
+
+        //就是這段 花了我一整天的時間....
+        List<ResolveInfo> resInfoList = mContext.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        for (ResolveInfo resolveInfo : resInfoList) {
+            String packageName = resolveInfo.activityInfo.packageName;
+            mContext.grantUriPermission(packageName, FilePath, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+
+        return  FilePath;
     }
 
     public static int PriorityImage(String PriorityString) {

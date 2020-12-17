@@ -19,7 +19,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -30,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,7 +70,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
     private DropDownAdapter mDropDownAdapter;
     private DropDownAdapterweek mDropDownAdapterweek;
 
-
+    public List<String> ArrayYear = new ArrayList<String>();
     private List<String> ArrayWeek = new ArrayList<String>();
     private List<String> ArrayDeptName = new ArrayList<String>();
     private List<String> ArrayDeptID = new ArrayList<String>();
@@ -96,7 +99,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
     private TextView main_leave_title;
 
     //稼動率欄位
-    private LinearLayout linear_utirate;
+    private RelativeLayout linear_utirate;
     private Button btn_utirateinfo;
 
     private String putManpower_status;//帶到第二頁小視窗
@@ -124,6 +127,10 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
     private TextView main_expectman_number;
     private TextView main_manpower_title;
     private TextView main_Manpower_icon;
+    //管銷研欄位
+    private LinearLayout Linear_MSR_BU;
+    private TextView main_MSR_BU_title;
+    private TextView main_MSR_BU_number;
     //工時欄位
     private LinearLayout linear_workhour;
     private LinearLayout linear_workhour_2;
@@ -179,6 +186,8 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
     private LinearLayout main_linearLayout6;
     private LinearLayout main_linearLayout7;
 
+    private LinearLayout line_center_text;
+
     //該部門每月目前總計加班時數
     private Double Dpt_overtime_MonthTotal;
     private TextView dpt_overtime_month_total;
@@ -187,10 +196,29 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
     private String put_LastWeekTotalHour;
     private String put_LastMonthTotalHour;
 
+    private TextView textView_piechart_value;
+
+    private String Set_CostSum;
+
     //摘要送出紐
     private EditText txt_summary_content;
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
+
+
+    //判斷回首頁狀態
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (data != null) {
+            Bundle bundle = data.getExtras();
+            Integer SummaryCheck = Integer.valueOf(bundle.getString("SummaryCheck"));
+            if(SummaryCheck ==1){
+                Find_Get_Week();
+                Find_Dept_List();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,6 +227,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
         Log.w("WrokID",String.valueOf(UserData.WorkID));
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         //設定登入權限路徑
         getlogingID = UserData.WorkID;//抓第一頁登入工號
         String[] Keyman = {"10015812", "10016109","10015657","10010670","10016049","10003275","10010059","10015667","10016295","10015635"};//部門權限開放
@@ -211,6 +240,9 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         lindepart = (LinearLayout) findViewById(R.id.linear_spinnerdp);
 
         dpt_overtime_month_total = (TextView) findViewById(R.id.dpt_overtime_month_total);
+
+        textView_piechart_value = (TextView) findViewById(R.id.textView_piechart_value);
+        line_center_text = (LinearLayout) findViewById(R.id.line_center_text);
 
         tesView = (TextView) findViewById(R.id.textView123);
         progressBar = new ProgressDialog(this);
@@ -248,6 +280,13 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         btnback = (Button) findViewById(R.id.btn_spinnerdp_back);
         btnnext = (Button) findViewById(R.id.btn_spinnerdp_next);
 
+        //預設把紅點設為已讀取
+        Intent intent = new Intent();
+        Bundle b = new Bundle();
+        b.putString("Badge_Check","2");
+        intent.putExtras(b);
+        setResult(RESULT_OK, intent);
+
         //稼動率圖表
         mChart1 = (PieChart) findViewById(R.id.chart1);
         mChart1.setUsePercentValues(true);//如果被啟用，在圖表內的值繪製在百分之，而不是與它們的原始值。規定的值ValueFormatter進行格式化，然後以百分比規定。設定使用百分比值
@@ -258,8 +297,6 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         mChart1.setDrawHoleEnabled(true);//設置繪製孔啟用
         mChart1.setTransparentCircleColor(Color.WHITE);//設置透明圓形顏色
         mChart1.setTransparentCircleAlpha(110);//設置透明圓Alpha
-        mChart1.setHoleRadius(90f);//設置孔半徑
-        mChart1.setTransparentCircleRadius(90f);//設置透明圓半徑
         mChart1.setDrawCenterText(true);//設置繪製中心文本
         mChart1.setRotationAngle(0);//設置旋轉角度
         mChart1.setRotationEnabled(true);//設置旋轉啟用
@@ -267,6 +304,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         // add a selection listener
         mChart1.setOnChartValueSelectedListener(this);//設置在圖表值選擇的監聽器
         mChart1.animateY(1400, Easing.EasingOption.EaseInOutQuad);//動畫Y
+        //mChart1.setHoleColor(Color.parseColor("#111113")); //圈圈內顏色
         Legend l = mChart1.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
@@ -286,7 +324,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         main_leave_title = (TextView) findViewById(R.id.main_Leave_title);
 
         //稼動率欄位
-        linear_utirate = (LinearLayout) findViewById(R.id.linear_utirate);
+        linear_utirate = (RelativeLayout) findViewById(R.id.linear_utirate);
         btn_utirateinfo = (Button) findViewById(R.id.btn_utirateinfo);
 
         //加班欄位
@@ -308,6 +346,10 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         main_manpower_title = (TextView) findViewById(R.id.main_Manpower_title);
         main_Manpower_icon = (TextView) findViewById(R.id.main_Manpower_icon);//圖
 
+        //管銷研欄位
+        Linear_MSR_BU = (LinearLayout) findViewById(R.id.Linear_MSR_BU);
+        main_MSR_BU_title = (TextView) findViewById(R.id.main_MSR_BU_title);
+        main_MSR_BU_number = (TextView) findViewById(R.id.main_MSR_BU_number);
         //工時欄位
         linear_workhour = (LinearLayout) findViewById(R.id.Linear_Workhour);
         linear_workhour_2 = (LinearLayout) findViewById(R.id.Linear_Workhour_2);
@@ -330,6 +372,13 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         man_power_ic_status = (TextView) findViewById(R.id.man_power_ic_status);
         workhour_ic_status = (TextView) findViewById(R.id.workhour_ic_status);
         //manpower_workout_title_status = (TextView) findViewById(R.id.manpower_workout_title_status); //提示訊息
+
+        //閃爍
+        final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+        animation.setDuration(500); // duration - half a second
+        animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+        animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+        animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
 
         //摘要欄位
         linear_summary = (LinearLayout) findViewById(R.id.Linear_Summary);
@@ -405,7 +454,6 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
                 intent.putExtra("putMessage",putMessage);
 
-
                 msibook_dqaweekly_main.this.startActivity(intent);
 
             }
@@ -476,6 +524,68 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                 return false;
             }
         });
+
+        //管銷研 Click事件
+        Linear_MSR_BU.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //判斷漢堡列是否為null
+                if(popupWindow == null){
+                    if (spinnerdp.getSelectedItem() != null && spinner_week.getSelectedItem() != null) {
+                        switch (event.getAction()) {
+                            case MotionEvent.ACTION_DOWN:
+                                Linear_MSR_BU.setBackgroundColor(Color.parseColor("#e2e2e2"));
+                                return true;
+                            case MotionEvent.ACTION_UP:
+                                Linear_MSR_BU.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+                                Intent intent = new Intent(msibook_dqaweekly_main.this, msibook_dqaweekly_msr_bu_info.class);
+
+                                intent.putExtra("Title", putEtradp);
+
+                                intent.putExtra("Week", putEtrawk);
+
+                                intent.putExtra("Year", putEtraYear);//代年到下一頁
+
+                                intent.putExtra("ChoiceDepID", putEtraDepID);
+
+                                msibook_dqaweekly_main.this.startActivity(intent);
+
+                                return true;
+                        }
+                    }
+                    //判斷漢堡列是否展開
+                }else if(popupWindow.isShowing()){
+                    popupWindow.dismiss();
+                }else
+                if (spinnerdp.getSelectedItem() != null && spinner_week.getSelectedItem() != null) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            Linear_MSR_BU.setBackgroundColor(Color.parseColor("#e2e2e2"));
+                            return true;
+                        case MotionEvent.ACTION_UP:
+                            Linear_MSR_BU.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+
+                            Intent intent = new Intent(msibook_dqaweekly_main.this, msibook_dqaweekly_msr_bu_info.class);
+
+                            intent.putExtra("Title", putEtradp);
+
+                            intent.putExtra("Week", putEtrawk);
+
+                            intent.putExtra("Year", putEtraYear);//代年到下一頁
+
+                            intent.putExtra("ChoiceDepID", putEtraDepID);
+
+                            msibook_dqaweekly_main.this.startActivity(intent);
+
+                            return true;
+                    }
+                }
+                return false;
+            }
+        });
+
 
         //工時Click事件
         linear_workhour.setOnTouchListener(new View.OnTouchListener() {
@@ -570,7 +680,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 intent.putExtra("ChoiceDepID", putEtraDepID);
 
                                 //從MainActivity 到Main2Activity
-                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_main_page2.class);
+                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_check_7day_overtime.class);
                                 //開啟Activity
                                 startActivity(intent);
                                 return true;
@@ -600,7 +710,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 intent.putExtra("ChoiceDepID", putEtraDepID);
 
                                 //從MainActivity 到Main2Activity
-                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_main_page2.class);
+                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_check_7day_overtime.class);
                                 //開啟Activity
                                 startActivity(intent);
                                 return true;
@@ -612,38 +722,38 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
         });
 
         //加班Info icon 點選事件
-//        btn_overhourinfo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                int []location=new int[2];
-//                v.getLocationOnScreen(location);
-//                int x=location[0];//获取当前位置的横坐标
-//                int y=location[1];
-//
-//                Intent intent = new Intent(msibook_dqaweekly_main.this, info_overhourinfo.class);
-//
-//                intent.putExtra("DptTitle", putEtradp);//部門名稱
-//
-//                intent.putExtra("ChoiceDepID", putEtraDepID);//給第二頁部門代號
-//
-//                intent.putExtra("Week", putEtrawk);//給第二頁Week
-//
-//                intent.putExtra("Year", putEtraYear);//給第二頁Year
-//
-//                intent.putExtra("LastWeekTotalHour",put_LastWeekTotalHour);//上週申請
-//
-//                intent.putExtra("LastMonthTotalHour",put_LastMonthTotalHour);//上月申報
-//
-//                intent.putExtra("x_Location",String.valueOf(x));
-//                Log.w("x_Location",String.valueOf(x));
-//
-//                intent.putExtra("y_Location",String.valueOf(y));
-//                Log.w("y_Location",String.valueOf(y));
-//
-//                msibook_dqaweekly_main.this.startActivity(intent);
-//            }
-//        });
+        btn_overhourinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int []location=new int[2];
+                v.getLocationOnScreen(location);
+                int x=location[0];//获取当前位置的横坐标
+                int y=location[1];
+
+                Intent intent = new Intent(msibook_dqaweekly_main.this, msibook_dqaweekly_info_overhourinfo.class);
+
+                intent.putExtra("DptTitle", putEtradp);//部門名稱
+
+                intent.putExtra("ChoiceDepID", putEtraDepID);//給第二頁部門代號
+
+                intent.putExtra("Week", putEtrawk);//給第二頁Week
+
+                intent.putExtra("Year", putEtraYear);//給第二頁Year
+
+                intent.putExtra("LastWeekTotalHour",put_LastWeekTotalHour);//上週申請
+
+                intent.putExtra("LastMonthTotalHour",put_LastMonthTotalHour);//上月申報
+
+                intent.putExtra("x_Location",String.valueOf(x));
+                Log.w("x_Location",String.valueOf(x));
+
+                intent.putExtra("y_Location",String.valueOf(y));
+                Log.w("y_Location",String.valueOf(y));
+
+                msibook_dqaweekly_main.this.startActivity(intent);
+            }
+        });
 
         //請假Click事件
         linear_leave.setOnTouchListener(new View.OnTouchListener() {
@@ -737,7 +847,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 intent.putExtra("ChoiceDepID", putEtraDepID);
 
                                 //從MainActivity 到Main2Activity
-                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_main_page2.class);
+                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_page2_project_list.class);
                                 //開啟Activity
                                 startActivity(intent);
                                 return true;
@@ -767,7 +877,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 intent.putExtra("ChoiceDepID", putEtraDepID);
 
                                 //從MainActivity 到Main2Activity
-                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_main_page2.class);
+                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_page2_project_list.class);
                                 //開啟Activity
                                 startActivity(intent);
                                 return true;
@@ -810,7 +920,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 //把位置帶到摘要頁方便回首頁時會回選定的該部門
                                 intent.putExtra("SpinnerDP_position",String.valueOf(spinnerdp.getSelectedItemPosition()));
                                 //從MainActivity 到Main2Activity
-                                //intent.setClass(msibook_dqaweekly_main.this, Main_summary.class);//跳轉頁面至第二頁
+                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_main_summary.class);//跳轉頁面至第二頁
                                 //開啟Activity
                                 startActivityForResult(intent,1);
                                 return true;
@@ -840,7 +950,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 intent.putExtra("ChoiceDepID", putEtraDepID);
 
                                 //從MainActivity 到Main2Activity
-                                //intent.setClass(msibook_dqaweekly_main.this, Main_summary.class);
+                                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_main_summary.class);
                                 //開啟Activity
                                 startActivityForResult(intent,1);
                                 //startActivity(intent);
@@ -900,11 +1010,11 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                 Toast.makeText(msibook_dqaweekly_main.this, "回部級週報", Toast.LENGTH_SHORT).show();
                 popupWindow.dismiss();
 
-//                Intent intent = new Intent();
-//
-//                intent.setClass(msibook_dqaweekly_main.this, ProjectActivity.class);//首頁  > 部級週報
-//                //開啟Activity
-//                startActivity(intent);
+                Intent intent = new Intent();
+
+                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_project_activity.class);//首頁  > 部級週報
+                //開啟Activity
+                startActivityForResult(intent,1);
 
                 Log.w("部級週報","部級週報");
             }
@@ -929,11 +1039,11 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                 Toast.makeText(msibook_dqaweekly_main.this, "操作說明", Toast.LENGTH_SHORT).show();
                 popupWindow.dismiss();
 
-//                Intent intent = new Intent();
-//                //從MainActivity 到Main2Activity
-//                intent.setClass(msibook_dqaweekly_main.this, Main_ViewPager.class);
-//                //開啟Activity
-//                startActivity(intent);
+                Intent intent = new Intent();
+                //從MainActivity 到Main2Activity
+                intent.setClass(msibook_dqaweekly_main.this, msibook_dqaweekly_IntroActivity.class);
+                //開啟Activity
+                startActivity(intent);
 
                 Log.w("操作說明","操作說明");
             }
@@ -1097,7 +1207,6 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
                     spinnerdp.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
 
-
                         public void onItemSelected(AdapterView adapterView, View view, int position, long id) {
 
                             DropDownAdapter DropDownAdapter =  (DropDownAdapter)adapterView.getAdapter();
@@ -1108,13 +1217,13 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
                             if (ArrayWeek.size() > 0)
                             {
-                                Find_WeekReport(ArrayDeptID.get(position),SetF_Year,ArrayWeek.get(spinner_week.getSelectedItemPosition()).replace("週",""));
+                                Find_WeekReport(ArrayDeptID.get(position),ArrayYear.get(spinner_week.getSelectedItemPosition()),ArrayWeek.get(spinner_week.getSelectedItemPosition()).replace("週",""));
                                 //Find_Weekly_Content(ArrayDeptID.get(spinnerdp.getSelectedItemPosition()),ArrayWeek.get(position).replace("週",""));
                                 //Find_Over_Hour(ArrayDeptID.get(position),ArrayWeek.get(spinner_week.getSelectedItemPosition()).replace("週",""));
                             }
                             else
                             {
-                                Find_WeekReport(ArrayDeptID.get(position),SetF_Year,"0");
+                                Find_WeekReport(ArrayDeptID.get(position),"0","0");
                                 //Find_Weekly_Content(ArrayDeptID.get(position),"0");
                                 //Find_Over_Hour(ArrayDeptID.get(position),"0");
                             }
@@ -1144,10 +1253,12 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
     private void Find_Get_Week() {
         //顯示  讀取等待時間Bar
         progressBar.show();
+        ArrayYear.clear();
         ArrayWeek.clear();
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Get_Week";
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -1162,16 +1273,14 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                             JSONObject IssueData = UserArray.getJSONObject(i);
 
                             String F_Year = String.valueOf(IssueData.getInt("F_Year"));
-                            SetF_Year = F_Year;
 
                             String weekID = String.valueOf(IssueData.getInt("F_Week"));
 
+                            ArrayYear.add(i, F_Year);
                             ArrayWeek.add(i,weekID + "週");
                             //tesView.setText(UserArray.length());
 
                         }
-                        putEtraYear = SetF_Year;
-
                         spinner_week = (Spinner) findViewById(R.id.spinner_week);
 
                         mDropDownAdapterweek = new DropDownAdapterweek(msibook_dqaweekly_main.this, ArrayWeek);
@@ -1210,7 +1319,8 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
                                 if(spinnerdp.getSelectedItem() != null)
                                 {
-                                    Find_WeekReport(ArrayDeptID.get(spinnerdp.getSelectedItemPosition()),SetF_Year,ArrayWeek.get(position).replace("週",""));
+                                    Find_WeekReport(ArrayDeptID.get(spinnerdp.getSelectedItemPosition()),ArrayYear.get(spinner_week.getSelectedItemPosition()),ArrayWeek.get(position).replace("週",""));
+                                    putEtraYear = ArrayYear.get(spinner_week.getSelectedItemPosition());
                                     //Find_Weekly_Content(ArrayDeptID.get(spinnerdp.getSelectedItemPosition()),ArrayWeek.get(position).replace("週",""));
                                     //Find_Over_Hour(ArrayDeptID.get(spinnerdp.getSelectedItemPosition()),ArrayWeek.get(position).replace("週",""));
                                 }
@@ -1241,6 +1351,10 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                     linear_manpower.setEnabled(false);
                                     linear_manpower_2.setVisibility(View.INVISIBLE);
                                     main_Manpower_icon.setVisibility(View.INVISIBLE);
+
+                                    Linear_MSR_BU.setBackgroundColor(Color.parseColor("#3c3c3c"));
+                                    Linear_MSR_BU.getBackground().setAlpha(30);
+                                    Linear_MSR_BU.setEnabled(false);
 
                                     linear_workhour.setBackgroundColor(Color.parseColor("#3c3c3c"));
                                     linear_workhour.getBackground().setAlpha(30);
@@ -1284,6 +1398,10 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                     linear_manpower.setEnabled(true);
                                     linear_manpower_2.setVisibility(View.VISIBLE);
                                     main_Manpower_icon.setVisibility(View.VISIBLE);
+
+                                    Linear_MSR_BU.setBackgroundColor(Color.parseColor("#ffffff"));
+                                    Linear_MSR_BU.setEnabled(true);
+                                    Linear_MSR_BU.setVisibility(View.VISIBLE);
 
                                     linear_workhour.setBackgroundColor(Color.parseColor("#ffffff"));
                                     linear_workhour.setEnabled(true);
@@ -1336,6 +1454,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath +"/Find_Weekly_Report?DeptID=" + DeptID + "&Year=" + Year+ "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -1386,7 +1505,14 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
                         String ExpectMan = String.valueOf(IssueData.getLong("ExpectMan"));
 
-                        String CostSum = String.valueOf(IssueData.getLong("CostSum"));
+                        //String CostSum = String.valueOf(IssueData.getLong("CostSum"));
+                        if (IssueData.isNull("CostSum")) {
+                            String CostSum = "0.0";
+                            Set_CostSum = "0.0";
+                        } else {
+                            String CostSum = String.valueOf(IssueData.getLong("CostSum")); //研發階段 10
+                            Set_CostSum = CostSum;
+                        }
 
                         String Project_Count = String.valueOf(IssueData.getLong("Project_Count"));
 
@@ -1434,101 +1560,158 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
                         //編制率 & 稼動率  合併判斷
                         //HR <1
-                        if (HR < 1 && total_A >=90 && total_A<=100){//編制率 小於1 、 稼動率介於  90~100
-                            //manpower_workout_title_status.setText("專案需求減少");//專案不如預期
-                            putMessage="專案需求減少";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_shortage);//短缺
-                            putManpower_status="ic_status_shortage";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fullload);//滿載
-                            putWorkhour_status="ic_status_fullload";
-                        }else if (HR < 1 && total_A >100){    //編制率 小於1 、 稼動率大於  100
-                            //manpower_workout_title_status.setText("專案轉換階段\n設備未到齊\n專案時程延誤");
-                            putMessage="專案轉換階段\n設備未到齊\n專案時程延誤";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_shortage);//短缺
-                            putManpower_status="ic_status_shortage";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_overload);//超載
-                            putWorkhour_status="ic_status_overload";
-                            RSS_Data_List(DeptID,SetF_Year,Week);//稼動率>100 撈加班
-                        }else if (HR < 1 && total_A <90){    //編制率 小於1 、 稼動率小於  90
-                            //manpower_workout_title_status.setText("專案轉換階段\n設備未到齊");
-                            putMessage="專案轉換階段\n設備未到齊";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_shortage);//短缺
-                            putManpower_status="ic_status_shortage";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_lowload);//低載
-                            putWorkhour_status="ic_status_lowload";
-                            Leave_Data_List(DeptID,SetF_Year,Week);//稼動率<90 撈請假
-                        }
+                        if (String.valueOf(total_A).contains("NaN")) {
+                            total_A = 0.0;
+                            man_power_ic_status.setVisibility(View.INVISIBLE);
+                            man_power_ic_status.clearAnimation();
+                            workhour_ic_status.setVisibility(View.INVISIBLE);
+                            workhour_ic_status.clearAnimation();
+                        } else {
 
-                        //HR = 1
-                        if (HR == 1 && total_A >=90 && total_A<=100){//編制率 等於1 、 稼動率介於  90~100
-                            //manpower_workout_title_status.setText("無異常");
-                            putMessage="無異常";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fulledition);//滿編
-                            putManpower_status="ic_status_fulledition";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fullload);//滿載
-                            putWorkhour_status="ic_status_fullload";
-                        }else if (HR == 1 && total_A >100){    //編制率 等於1 、 稼動率大於  100
-                            //manpower_workout_title_status.setText("專案時間重疊\n專案時程延誤\n客戶額外要求");
-                            putMessage="專案時間重疊\n專案時程延誤\n客戶額外要求";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fulledition);//滿編
-                            putManpower_status="ic_status_fulledition";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_overload);//超載
-                            putWorkhour_status="ic_status_overload";
-                            RSS_Data_List(DeptID,SetF_Year,Week);//稼動率>100 撈加班
-                        }else if (HR == 1 && total_A <90){    //編制率 等於1 、 稼動率小於  90
-                            //manpower_workout_title_status.setText("專案轉換階段\n設備未到齊");
-                            putMessage="專案轉換階段\n設備未到齊";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fulledition);//滿編
-                            putManpower_status="ic_status_fulledition";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_lowload);//低載
-                            putWorkhour_status="ic_status_lowload";
-                            Leave_Data_List(DeptID,SetF_Year,Week);//稼動率<90 撈請假
-                        }
+                            if (HR < 1 && total_A >= 90 && total_A <= 100) {//編制率 小於1 、 稼動率介於  90~100
+                                //manpower_workout_title_status.setText("專案需求減少");//專案不如預期
+                                putMessage = "專案需求減少";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_shortage);//短缺
+                                man_power_ic_status.clearAnimation();
+                                putManpower_status = "ic_status_shortage";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fullload);//滿載
+                                workhour_ic_status.clearAnimation();
+                                putWorkhour_status = "ic_status_fullload";
+                            } else if (HR < 1 && total_A > 100) {    //編制率 小於1 、 稼動率大於  100
+                                //manpower_workout_title_status.setText("專案轉換階段\n設備未到齊\n專案時程延誤");
+                                //閃爍
+                                final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                                animation.setDuration(500); // duration - half a second
+                                animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                                animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                                animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
 
-                        //HR > 1
-                        if (HR > 1 && total_A >=90 && total_A<=100){//編制率 大於1 、 稼動率介於  90~100
-                            //manpower_workout_title_status.setText("專案需求增加");//專案超出預期
-                            putMessage="專案需求增加";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_super);//超編
-                            putManpower_status="ic_status_super";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fullload);//滿載
-                            putWorkhour_status="ic_status_fullload";
-                        }else if (HR > 1 && total_A >100){    //編制率 大於1 、 稼動率大於  100
-                            //manpower_workout_title_status.setText("專案需求增加\n專案時間重疊\n客戶額外要求");
-                            putMessage="專案需求增加\n專案時間重疊\n客戶額外要求";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_super);//超編
-                            putManpower_status="ic_status_super";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_overload);//超載
-                            putWorkhour_status="ic_status_overload";
-                            RSS_Data_List(DeptID,SetF_Year,Week);//稼動率>100 撈加班
-                        }else if (HR > 1 && total_A <90){    //編制率 大於1 、 稼動率小於  90
-                            //manpower_workout_title_status.setText("專案需求增加\n設備未到齊");
-                            putMessage="專案需求增加\n設備未到齊";
-                            man_power_ic_status.setVisibility(View.VISIBLE);
-                            man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_super);//超編
-                            putManpower_status="ic_status_super";
-                            workhour_ic_status.setVisibility(View.VISIBLE);
-                            workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_lowload);//低載
-                            putWorkhour_status="ic_status_lowload";
-                            Leave_Data_List(DeptID,SetF_Year,Week);//稼動率<90 撈請假
-                        }
+                                putMessage = "專案轉換階段\n設備未到齊\n專案時程延誤";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_shortage);//短缺
+                                man_power_ic_status.clearAnimation();
+                                putManpower_status = "ic_status_shortage";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_overload);//超載
+                                workhour_ic_status.startAnimation(animation);
+                                putWorkhour_status = "ic_status_overload";
+                                RSS_Data_List(DeptID, ArrayYear.get(spinner_week.getSelectedItemPosition()), Week);//稼動率>100 撈加班
+                            } else if (HR < 1 && total_A < 90) {    //編制率 小於1 、 稼動率小於  90
+                                //manpower_workout_title_status.setText("專案轉換階段\n設備未到齊");
+                                putMessage = "專案轉換階段\n設備未到齊";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_shortage);//短缺
+                                man_power_ic_status.clearAnimation();
+                                putManpower_status = "ic_status_shortage";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_lowload);//低載
+                                workhour_ic_status.clearAnimation();
+                                putWorkhour_status = "ic_status_lowload";
+                                Leave_Data_List(DeptID, ArrayYear.get(spinner_week.getSelectedItemPosition()), Week);//稼動率<90 撈請假
+                            }
 
+                            //HR = 1
+                            if (HR == 1 && total_A >= 90 && total_A <= 100) {//編制率 等於1 、 稼動率介於  90~100
+                                //manpower_workout_title_status.setText("無異常");
+                                putMessage = "無異常";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fulledition);//滿編
+                                man_power_ic_status.clearAnimation();
+                                putManpower_status = "ic_status_fulledition";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fullload);//滿載
+                                workhour_ic_status.clearAnimation();
+                                putWorkhour_status = "ic_status_fullload";
+                            } else if (HR == 1 && total_A > 100) {    //編制率 等於1 、 稼動率大於  100
+                                //manpower_workout_title_status.setText("專案時間重疊\n專案時程延誤\n客戶額外要求");
+                                //閃爍
+                                final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                                animation.setDuration(500); // duration - half a second
+                                animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                                animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                                animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                                putMessage = "專案時間重疊\n專案時程延誤\n客戶額外要求";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fulledition);//滿編
+                                man_power_ic_status.clearAnimation();
+                                putManpower_status = "ic_status_fulledition";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_overload);//超載
+                                workhour_ic_status.startAnimation(animation);
+                                putWorkhour_status = "ic_status_overload";
+                                RSS_Data_List(DeptID, ArrayYear.get(spinner_week.getSelectedItemPosition()), Week);//稼動率>100 撈加班
+                            } else if (HR == 1 && total_A < 90) {    //編制率 等於1 、 稼動率小於  90
+                                //manpower_workout_title_status.setText("專案轉換階段\n設備未到齊");
+                                putMessage = "專案轉換階段\n設備未到齊";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fulledition);//滿編
+                                man_power_ic_status.clearAnimation();
+                                putManpower_status = "ic_status_fulledition";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_lowload);//低載
+                                workhour_ic_status.clearAnimation();
+                                putWorkhour_status = "ic_status_lowload";
+                                Leave_Data_List(DeptID, ArrayYear.get(spinner_week.getSelectedItemPosition()), Week);//稼動率<90 撈請假
+                            }
+
+                            //HR > 1
+                            if (HR > 1 && total_A >= 90 && total_A <= 100) {//編制率 大於1 、 稼動率介於  90~100
+                                //manpower_workout_title_status.setText("專案需求增加");//專案超出預期
+                                //閃爍
+                                final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                                animation.setDuration(500); // duration - half a second
+                                animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                                animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                                animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                                putMessage = "專案需求增加";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_super);//超編
+                                man_power_ic_status.startAnimation(animation);
+                                putManpower_status = "ic_status_super";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_fullload);//滿載
+                                workhour_ic_status.clearAnimation();
+                                putWorkhour_status = "ic_status_fullload";
+                            } else if (HR > 1 && total_A > 100) {    //編制率 大於1 、 稼動率大於  100
+                                //manpower_workout_title_status.setText("專案需求增加\n專案時間重疊\n客戶額外要求");
+                                //閃爍
+                                final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                                animation.setDuration(500); // duration - half a second
+                                animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                                animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                                animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                                putMessage = "專案需求增加\n專案時間重疊\n客戶額外要求";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_super);//超編
+                                man_power_ic_status.startAnimation(animation);
+                                putManpower_status = "ic_status_super";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_overload);//超載
+                                workhour_ic_status.startAnimation(animation);
+                                putWorkhour_status = "ic_status_overload";
+                                RSS_Data_List(DeptID, ArrayYear.get(spinner_week.getSelectedItemPosition()), Week);//稼動率>100 撈加班
+                            } else if (HR > 1 && total_A < 90) {    //編制率 大於1 、 稼動率小於  90
+                                //manpower_workout_title_status.setText("專案需求增加\n設備未到齊");
+                                //閃爍
+                                final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                                animation.setDuration(500); // duration - half a second
+                                animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                                animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                                animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                                putMessage = "專案需求增加\n設備未到齊";
+                                man_power_ic_status.setVisibility(View.VISIBLE);
+                                man_power_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_super);//超編
+                                man_power_ic_status.startAnimation(animation);
+                                putManpower_status = "ic_status_super";
+                                workhour_ic_status.setVisibility(View.VISIBLE);
+                                workhour_ic_status.setBackgroundResource(R.mipmap.dqaweekly_ic_status_lowload);//低載
+                                workhour_ic_status.clearAnimation();
+                                putWorkhour_status = "ic_status_lowload";
+                                Leave_Data_List(DeptID, ArrayYear.get(spinner_week.getSelectedItemPosition()), Week);//稼動率<90 撈請假
+                            }
+                        }
 
 //                        //main_utirate_number.setText(String.format("%.2f", A));//稼動率
 //                        if(A > 100){//紅色
@@ -1543,30 +1726,22 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 //                            main_utirate_number.setText(String.format("%.2f", A));//稼動率
 //                            main_utirate_number.setTextColor(Color.parseColor("#656565"));
 //                        }
-                        if((total_A /100)>1){
-                            mChart1.setCenterText(generateCenterSpannableText(String.format("%.2f", total_A)+"%"+"\n稼動率",240,98,93));
-                            mChart1.setCenterTextSize(40);
-                        }
-
-                        else if ((total_A /100)<0.9){
-                            mChart1.setCenterText(generateCenterSpannableText(String.format("%.2f", total_A)+"%"+"\n稼動率",70,170,54));
-                            mChart1.setCenterTextSize(40);
-                        }
-
-                        else if ((total_A /100)<=1 && ((total_A /100)>=0.9)){
-                            mChart1.setCenterText(generateCenterSpannableText(String.format("%.2f", total_A)+"%"+"\n稼動率",101, 101, 101));
-                            mChart1.setCenterTextSize(40);
-                        }
-
                         //稼動率圖表寫入資料
                         float a = (float) (total_A / 100);
 
                         if (a > 1) {
+                            mChart1.setHoleRadius(0f);//設置孔半徑
+                            mChart1.setTransparentCircleRadius(0f);//設置透明圓半徑
                             entries.add(new PieEntry(a, ""));
-                        } else {
-                            entries.add(new PieEntry(a, ""));
+                            //entries.add(new PieEntry(a-1, ""));
+                            line_center_text.setVisibility(View.VISIBLE);
 
+                        } else {
+                            mChart1.setHoleRadius(90f);//設置孔半徑
+                            mChart1.setTransparentCircleRadius(90f);//設置透明圓半徑
+                            entries.add(new PieEntry(a, ""));
                             entries.add(new PieEntry(1 - a, ""));
+                            line_center_text.setVisibility(View.INVISIBLE);
                         }
 
                         PieDataSet dataSet = new PieDataSet(entries, "Election Results");
@@ -1574,11 +1749,16 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                         dataSet.setSliceSpace(3f);
                         dataSet.setSelectionShift(5f);
 
-
                         // add a lot of colors
                         ArrayList<Integer> colors = new ArrayList<Integer>();
-                        colors.add(Color.parseColor("#90afcb"));// 百分比 藍色
-                        colors.add(Color.parseColor("#e6e7e8"));//百分比 灰色
+                        if (a > 1) {
+                            colors.add(Color.parseColor("#d73940"));// 百分比 紅色 #90afcb
+                            colors.add(Color.parseColor("#EEEE00"));//百分比 灰色 #e6e7e8
+                        }else{
+                            colors.add(Color.parseColor("#d73940"));// 百分比 紅色 #90afcb
+                            colors.add(Color.parseColor("#e6e7e8"));//百分比 灰色 #e6e7e8
+                        }
+
                         colors.add(ColorTemplate.getHoloBlue());
                         dataSet.setColors(colors);
                         dataSet.setDrawValues(false);//周圍線條資訊拿掉
@@ -1601,6 +1781,27 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                         // undo all highlights
                         mChart1.highlightValues(null);
 
+
+                        if((total_A /100)>1){
+                            mChart1.setCenterText(generateCenterSpannableText(String.format("%.2f", total_A)+"%"+"\n稼動率",217, 64, 69));
+                            mChart1.setCenterTextSize(40);
+                            textView_piechart_value.setText(String.format("%.2f", total_A));
+                        }
+
+                        else if ((total_A /100)<0.9){
+                            mChart1.setCenterText(generateCenterSpannableText(String.format("%.2f", total_A)+"%"+"\n稼動率",70,170,54));
+                            mChart1.setCenterTextSize(40);
+                            textView_piechart_value.setText(String.format("%.2f", total_A));
+                        }
+
+                        else if ((total_A /100)<=1 && ((total_A /100)>=0.9)){
+                            mChart1.setCenterText(generateCenterSpannableText(String.format("%.2f", total_A)+"%"+"\n稼動率",101, 101, 101));
+                            mChart1.setCenterTextSize(40);
+                            textView_piechart_value.setText(String.format("%.2f", total_A));
+                        }
+
+
+
                         mChart1.invalidate();
 
 
@@ -1615,7 +1816,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 main_Workhour_icon.setVisibility(View.VISIBLE);
                                 main_Workhour_icon.setBackgroundResource(R.mipmap.dqaweekly_ic_workhr_low);//工時低
                                 main_overhour_number.setText(OverTimeHour);//加班
-                                main_overhour_number.setTextColor(Color.parseColor("#656565"));
+                                main_overhour_number.setTextColor(Color.parseColor("#46aa36"));
                                 main_overhour_number.setTypeface(null, Typeface.NORMAL);
 
 
@@ -1629,19 +1830,19 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                                 main_Workhour_icon.setVisibility(View.VISIBLE);
                                 main_Workhour_icon.setBackgroundResource(R.mipmap.dqaweekly_ic_workhr_heigh);//工時高
                                 main_overhour_number.setText(OverTimeHour);//加班
-                                main_overhour_number.setTextColor(Color.parseColor("#656565"));
+                                main_overhour_number.setTextColor(Color.parseColor("#d94045"));
                                 //main_overhour_number.setTypeface(null,Typeface.BOLD);
                                 main_overhour_number.setTypeface(null, Typeface.NORMAL);
 
                                 main_realworkhour_number.setText(String.format("%.1f", C));//實際工時
-                                main_realworkhour_number.setTextColor(Color.parseColor("#f0625d"));//紅色
+                                main_realworkhour_number.setTextColor(Color.parseColor("#d94045"));//紅色
                                 main_realworkhour_number.setTypeface(null, Typeface.BOLD);
                             }
 
                             if (Realwroktime - Expectwroktime == 0) {
                                 main_Workhour_icon.setVisibility(View.INVISIBLE);////工時正常 隱藏
                                 main_overhour_number.setText(OverTimeHour);//加班
-                                main_overhour_number.setTextColor(Color.parseColor("#656565"));
+                                main_overhour_number.setTextColor(Color.parseColor("#828795"));
                                 main_overhour_number.setTypeface(null, Typeface.NORMAL);
 
                                 main_realworkhour_number.setText(String.format("%.1f", C));//實際工時
@@ -1657,20 +1858,23 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
                         if (Totalman > Epcman){
                             main_Manpower_icon.setBackgroundResource(R.mipmap.dqaweekly_ic_manpower_exceed);//工時高
                             main_totalman_number.setText(TotalMan);//目前編制
-                            main_totalman_number.setTextColor(Color.parseColor("#f0625d"));//紅色
+                            main_MSR_BU_number.setText(TotalMan);//目前管銷研
+                            main_totalman_number.setTextColor(Color.parseColor("#d94045"));//紅色 f0625d
                             main_totalman_number.setTypeface(null,Typeface.BOLD);
                             main_expectman_number.setText(ExpectMan);//應有編制
                         }else if(Totalman < Epcman){
                             main_Manpower_icon.setBackgroundResource(R.mipmap.dqaweekly_ic_manpower_shortage);//工時高
                             main_totalman_number.setText(TotalMan);//目前編制
-                            main_totalman_number.setTextColor(Color.parseColor("#656565"));//黑
+                            main_MSR_BU_number.setText(TotalMan);//目前管銷研
+                            main_totalman_number.setTextColor(Color.parseColor("#828795"));//黑
                             //main_totalman_number.setTypeface(null,Typeface.NORMAL);
                             main_totalman_number.setTypeface(null,Typeface.BOLD);
                             main_expectman_number.setText(ExpectMan);//應有編制
                         }else{
                             main_Manpower_icon.setBackgroundResource(R.mipmap.dqaweekly_ic_manpower_full);//工時高
                             main_totalman_number.setText(TotalMan);//目前編制
-                            main_totalman_number.setTextColor(Color.parseColor("#656565"));//黑
+                            main_MSR_BU_number.setText(TotalMan);//目前管銷研
+                            main_totalman_number.setTextColor(Color.parseColor("#828795"));//黑
                             //main_totalman_number.setTypeface(null,Typeface.NORMAL);
                             main_totalman_number.setTypeface(null,Typeface.BOLD);
                             main_expectman_number.setText(ExpectMan);//應有編制
@@ -1750,6 +1954,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 //
 //                                }
 //                            });
+
                     }else{
                         //摘要數量   判斷服務沒資料
                         main_summary_number.setText("0");
@@ -1769,7 +1974,8 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
         SpannableString s = new SpannableString(Title);
         s.setSpan(new ForegroundColorSpan(Color.rgb(a,b,c)), 0, s.length()-5, 0);
-        s.setSpan(new ForegroundColorSpan(Color.rgb(101, 101, 101)), s.length()-5, s.length(), 0);
+        s.setSpan(new ForegroundColorSpan(Color.rgb(33, 33, 33)), s.length()-5, s.length(), 0); //設訂 圖表中的字顏色
+        s.setSpan(new ForegroundColorSpan(Color.rgb(33, 33, 33)), s.length()-3, s.length(), 0); //設訂 圖表中的字顏色
         s.setSpan(new RelativeSizeSpan(0.5f), s.length()-5, s.length(), s.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         return s;
@@ -1783,6 +1989,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/Leave_Data_List?DeptID=" + DeptID + "&Year=" + Year+ "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -1826,6 +2033,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath + "/RSS_Data_List?DeptID=" + DeptID + "&Year=" + Year+ "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -1979,7 +2187,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
             if ((afterConvert / 100) > 1) {
 
 
-                color = "#f0625d";
+                color = "#d94045";
             } else if ((afterConvert / 100) == 0.0) {
 
                 color ="#c6c6c6";
@@ -1990,7 +2198,7 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
             } else if ((afterConvert / 100) <= 1 && (afterConvert / 100 >= 0.9)) {
 
-                color = "#656565";
+                color = "#828795";
             }
             return  color;
         }
@@ -2057,11 +2265,11 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
             // If this is the selected item position
             if (position == selectedItemdp) {
-                style.setBackgroundColor(Color.parseColor("#848484"));//灰色
+                style.setBackgroundColor(Color.parseColor("#d94045"));//灰色 848484
             }
             else {
                 // for other views
-                style.setBackgroundColor(Color.parseColor("#618db5"));//藍色
+                style.setBackgroundColor(Color.parseColor("#d21e25"));//藍色 618db5
             }
             return v;
         }
@@ -2129,11 +2337,11 @@ public class msibook_dqaweekly_main extends AppCompatActivity implements OnChart
 
             // If this is the selected item position
             if (position == selectedItemweek) {
-                style.setBackgroundColor(Color.parseColor("#848484"));//灰色
+                style.setBackgroundColor(Color.parseColor("#d94045"));//灰色 #848484
             }
             else {
                 // for other views
-                style.setBackgroundColor(Color.parseColor("#618db5"));//藍色
+                style.setBackgroundColor(Color.parseColor("#d21e25"));//藍色 #618db5
             }
             return v;
         }

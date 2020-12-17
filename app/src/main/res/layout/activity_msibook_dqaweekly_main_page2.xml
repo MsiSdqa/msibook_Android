@@ -9,9 +9,9 @@
 
 
     <RelativeLayout
-        android:layout_height="wrap_content"
-        android:background="#527da3"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d21e25"
         tools:ignore="UselessParent">
 
         <ImageView
@@ -24,42 +24,42 @@
             tools:ignore="ContentDescription" />
 
         <TextView
+            android:id="@+id/textViewshowdepart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewshowdepart"
-            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnknownId"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
             android:layout_below="@+id/logo_msi"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnknownId" />
 
         <FrameLayout
+            android:id="@+id/frame2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#e2e2e2"
-            android:id="@+id/frame2"
-            tools:ignore="NotSibling,UnknownId"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textViewshowdepart">
+            android:layout_below="@+id/textViewshowdepart"
+            android:background="#f4f4f4"
+            tools:ignore="NotSibling,UnknownId">
 
             <TextView
+                android:id="@+id/textView_listtop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_listtop"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"
-                android:textColor="#575757"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:textSize="21sp" />
+                android:textColor="#d21e25"
+                android:textSize="21sp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
             <ListView
                 android:id="@+id/list2"
@@ -71,10 +71,11 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="55dp"
                 android:background="#fff"
-                android:divider="#e2e2e2"
-                android:dividerHeight="10dp"
+                android:divider="#f4f4f4"
+                android:dividerHeight="7dp"
                 android:fastScrollAlwaysVisible="false"
                 android:headerDividersEnabled="false"
+                android:scrollbarThumbVertical="@android:color/darker_gray"
                 tools:ignore="ObsoleteLayoutParam" />
 
         </FrameLayout>
@@ -97,7 +98,6 @@
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
             tools:ignore="HardcodedText,RtlHardcoded,SpUsage,UnusedAttribute" />
-
 
 
     </RelativeLayout>

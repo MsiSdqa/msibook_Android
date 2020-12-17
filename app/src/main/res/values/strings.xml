@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MsiBook</string>
+    <string name="app_name">msiBook</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -23,4 +23,21 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_msibook_dqaweekly_summary_talk_list">
+        msibook_dqaweekly_summary_talk_list
+    </string>
+
+    <string name="search_title">搜尋專案</string>
+
+    <string name="search_hint">請輸入查詢字串</string>
+
+    <string name="upload_progress">Upload progress: %s</string>
+
+    <string name="connecting">ToyVPN is connecting...</string>
+    <string name="connected">ToyVPN is connected!</string>
+    <string name="disconnected">ToyVPN is disconnected!</string>
+
 </resources>

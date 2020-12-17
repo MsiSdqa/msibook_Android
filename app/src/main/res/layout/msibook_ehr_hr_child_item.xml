@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f7f8fa">
+
+
+    <LinearLayout
+        android:id="@+id/Linear_ehr_job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        tools:ignore="Orientation,UselessParent">
+
+        <TextView
+            android:id="@+id/textView_job_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="電源設計工程師"
+            android:textColor="#212121"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView_man_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="2"
+            android:textColor="#d21e25"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/textView232"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/ehr_btn_common_nextarrow" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView234"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/Linear_ehr_job"
+        android:background="#c8c7cc" />
+
+</RelativeLayout>

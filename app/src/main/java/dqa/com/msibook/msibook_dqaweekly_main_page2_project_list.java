@@ -111,7 +111,7 @@ public class msibook_dqaweekly_main_page2_project_list extends AppCompatActivity
                 intent.putExtra("m3ModelList",ChildWeek_Project_Item_list.get(groupPosition).get(childPosition).ModelList);//給第三頁 MS-7A61  MS-7A81
                 intent.putExtra("m3ModelIDList",ChildWeek_Project_Item_list.get(groupPosition).get(childPosition).ModelIDList);//給第三頁 12637  12638
 
-                //intent.setClass(msibook_dqaweekly_main_page2_project_list.this, Main4Activity.class);
+//                intent.setClass(msibook_dqaweekly_main_page2_project_list.this, Main4Activity.class);
                 //開啟Activity
                 startActivity(intent);
 
@@ -147,6 +147,7 @@ public class msibook_dqaweekly_main_page2_project_list extends AppCompatActivity
         ChildWeek_Project_Item_list.clear();
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.DQAWeeklyPath +"/Find_Week_Project?DeptID=" + DeptID + "&Year=" + Year + "&Week=" + Week;
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {
@@ -186,7 +187,9 @@ public class msibook_dqaweekly_main_page2_project_list extends AppCompatActivity
                         {
                             mChild_Project_Item_list.add(a,new Week_Project_Item(F_Map,Cnt,ModelNameArray[a],ModelIDArray[a]));
                         }
+
                         ChildWeek_Project_Item_list.add(i,mChild_Project_Item_list);
+
                     }
 
                     listAdapter = new ExpandableListAdapter(msibook_dqaweekly_main_page2_project_list.this, Week_Project_Item_list, ChildWeek_Project_Item_list);

@@ -49,14 +49,16 @@ import java.util.regex.Pattern;
 public class GetServiceData {
 
     //正式機
-    public static String ServicePath = "http://wtsc.msi.com.tw/IMS/MsiBook_App_Service.asmx";
+    public static String ServicePath = "https://wtsc.msi.com.tw/IMS/MsiBook_App_Service.asmx";
 
-    public static String IMS_ServicePath = "http://wtsc.msi.com.tw/IMS/IMS_App_Service.asmx";
+    public static String IMS_ServicePath = "https://wtsc.msi.com.tw/IMS/IMS_App_Service.asmx";
 
-    public static String DQAWeeklyPath = "http://wtsc.msi.com.tw/IMS/Weekly_Report.asmx";
-    public static String DQAWeekly_Login_P1 = "http://wtsc.msi.com.tw/IMS/Weekly_Report.asmx/Find_Dept_List";//週報有權限看全部門(部門Spinner)
-    public static String DQAWeekly_Login_P2 = "http://wtsc.msi.com.tw/IMS/Weekly_Report.asmx/Find_Dept_List_WorkID";//無權限，只能看自己部門(部門Spinner)
+    public static String DQAWeeklyPath = "https://wtsc.msi.com.tw/IMS/Weekly_Report.asmx";
+    public static String DQAWeekly_Login_P1 = "https://wtsc.msi.com.tw/IMS/Weekly_Report.asmx/Find_Dept_List";//週報有權限看全部門(部門Spinner)
+    public static String DQAWeekly_Login_P2 = "https://wtsc.msi.com.tw/IMS/Weekly_Report.asmx/Find_Dept_List_WorkID";//無權限，只能看自己部門(部門Spinner)
+    public static String ServicePath_overtime = "https://wtsc.msi.com.tw/IMS/OverTime_App_Service.asmx";
 
+    public static String ServicePathIMS = "https://wtsc.msi.com.tw/IMS/IMS_App_Service.asmx";
 
     //測試機
     //public static String ServicePath = "http://172.16.111.111:200/IMS_App_Service.asmx";
@@ -86,7 +88,7 @@ public class GetServiceData {
 
                 callback.onSendRequestError(error.getMessage());
 
-                Log.e("TAG", error.getMessage(), error);
+                Log.e("VolleyTAG", error.getMessage(), error);
             }
         });
         mQueue.add(stringRequest);
@@ -105,8 +107,7 @@ public class GetServiceData {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("TestJsonObj");
-                        System.out.println(error);
+
                     }
                 }
         );
@@ -251,7 +252,7 @@ public class GetServiceData {
 
     public static void GetImageByImageLoad(String Url, final ImageView Img, int DefaultImage, int ErrorImage) {
 
-
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         Url = ServicePath + "/Get_File?FileName=" + Url;
 
         if (!(Url.contains("http://") || Url.contains("https://"))) {
@@ -425,7 +426,7 @@ public class GetServiceData {
     public static void isUpdate(final Context context) {
 
         RequestQueue mQueue = Volley.newRequestQueue(context);
-
+        HTTPSTrustManager.allowAllSSL();//信任所有证书，信任憑證
         String Path = GetServiceData.ServicePath + "/Get_Android_Version";
 
         GetServiceData.getString(Path, mQueue, new GetServiceData.VolleyCallback() {

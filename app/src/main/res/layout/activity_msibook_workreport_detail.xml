@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".msibook_workreport_detail">
+
+<LinearLayout
+    android:id="@+id/linear_top"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#d21e25"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="工作報告細項"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
+
+
+<FrameLayout
+    android:id="@+id/frame_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/linear_top"
+    tools:context=".overtime_application">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView314"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="．專案："
+                android:textColor="#324148"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_ModelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#324148"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView317"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="．主旨："
+                android:textColor="#324148"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_F_Subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#324148"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView319"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="．建立日期："
+                android:textColor="#324148"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_F_CreateDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#324148"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView321"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="．工時："
+                android:textColor="#324148"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_F_WorkHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#324148"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView323"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="．總成本："
+                android:textColor="#324148"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_F_CostSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#324148"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/textView325"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:background="@mipmap/msibook_ic_remind" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/textView328"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="貼心提醒："
+                    android:textColor="#324148"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView327"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="若您想要看更詳細的工作報告內容．"
+                    android:textColor="#324148"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView326"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="請至網頁版查詢．謝謝。"
+                    android:textColor="#324148"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
+
+</android.widget.RelativeLayout>

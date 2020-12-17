@@ -1,137 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/adapter2_Relativelayout">
+    android:id="@+id/adapter2_Relativelayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="Orientation,UselessParent"
-        android:background="#fff"
-        android:id="@+id/Linear1"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal">
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1"
-            tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,SpUsage"
-            android:textColor="#575757"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:textSize="24sp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1" />
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:gravity="right"
-            android:layout_width="wrap_content"
+            android:id="@+id/Linear1"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            tools:ignore="RtlHardcoded"
-            android:id="@+id/m2linear"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="NestedWeights"
-                android:gravity="right">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView2"
-                    tools:ignore="HardcodedText,NestedWeights,SpUsage"
-                    android:textColor="#7c7c7c"
-                    android:textSize="15sp"
-                    android:layout_marginRight="5dp" />
-
-                <Button
-                    android:id="@+id/buttonup"
-                    android:layout_width="10dp"
-                    android:layout_height="15dp"
-                    android:background="@mipmap/dqaweekly_ic_hrs"
-                    android:focusable="false"
-                    tools:ignore="HardcodedText" />
-
-            </LinearLayout>
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            tools:ignore="Orientation,UselessParent">
 
             <TextView
+                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:id="@+id/textView3"
-                tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage"
-                android:textColor="#7c7c7c"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:textSize="15sp" />
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:textColor="#212121"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded,SpUsage" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:id="@+id/m2linear"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                tools:ignore="NestedWeights"
-                android:gravity="right|center">
+                android:gravity="right"
+                android:orientation="vertical"
+                tools:ignore="RtlHardcoded">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    tools:ignore="NestedWeights">
+
+                    <TextView
+
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:textColor="#828795"
+                        android:textSize="15sp"
+                        tools:ignore="HardcodedText,NestedWeights,SpUsage" />
+
+                    <Button
+                        android:id="@+id/buttonup"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:background="@mipmap/dqaweekly_ic_hrs"
+                        android:focusable="false"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:id="@+id/textView4"
-                    tools:ignore="HardcodedText,InefficientWeight,NestedWeights,RtlHardcoded,SpUsage"
-                    android:textColor="#7c7c7c"
-                    android:textSize="21sp"
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
-                    android:layout_marginRight="5dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="#828795"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                <Button
-                    android:id="@+id/buttondown"
-                    android:layout_width="10dp"
-                    android:layout_height="15dp"
-                    android:background="@mipmap/dqaweekly_ic_hrs"
-                    android:focusable="false"
-                    tools:ignore="HardcodedText,InefficientWeight" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center"
+                    android:orientation="horizontal"
+                    tools:ignore="NestedWeights">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="right"
+                        android:textColor="#828795"
+                        android:textSize="21sp"
+                        tools:ignore="HardcodedText,InefficientWeight,NestedWeights,RtlHardcoded,SpUsage" />
+
+                    <Button
+                        android:id="@+id/buttondown"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:background="@mipmap/dqaweekly_ic_hrs"
+                        android:focusable="false"
+                        tools:ignore="HardcodedText,InefficientWeight" />
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonm2H"
+
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="5dp"
+                android:background="@mipmap/dqaweekly_ic_hrs"
+                android:focusable="false"
+                tools:ignore="RtlHardcoded" />
+
+            <Button
+                android:id="@+id/button1"
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/dqaweekly_ic_more_arrow"
+                android:focusable="false"
+                tools:ignore="RtlHardcoded" />
 
         </LinearLayout>
 
-        <Button
-            android:focusable="false"
-
-            android:id="@+id/buttonm2H"
-            android:background="@mipmap/dqaweekly_ic_hrs"
-            tools:ignore="RtlHardcoded"
-            android:layout_width="15dp"
-            android:layout_height="20dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="12dp"
-            android:layout_marginRight="5dp" />
-
-        <Button
-            android:focusable="false"
-
-            android:layout_gravity="right|center_vertical"
-            android:id="@+id/button1"
-            android:background="@mipmap/dqaweekly_ic_more_arrow"
-            tools:ignore="RtlHardcoded"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+        <TextView
+            android:id="@+id/textView_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c7c7cc" />
 
     </LinearLayout>
 

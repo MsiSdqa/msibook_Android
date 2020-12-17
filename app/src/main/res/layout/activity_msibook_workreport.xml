@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".msibook_workreport">
+
+    <LinearLayout
+        android:id="@+id/linear_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d21e25"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/textView315"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="工作報告紀錄"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_Notifacation_info"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/tab_btn_notification_sel" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linear_top"
+        tools:context=".overtime_application">
+
+        <!-- TODO: Update blank fragment layout -->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/application_linall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/week_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f8f8f8"
+                    android:gravity="bottom|center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/back_week"
+                        android:layout_width="15dp"
+                        android:layout_height="25dp"
+                        android:background="@mipmap/overtime_btn_apply_left_arrow"
+                        android:paddingTop="7dp" />
+
+                    <TextView
+                        android:id="@+id/text_show_week"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="65dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="right"
+                        android:textColor="#4e515e"
+                        android:textSize="30sp"
+                        tools:ignore="HardcodedText,InefficientWeight,RtlHardcoded" />
+
+                    <TextView
+                        android:id="@+id/text_juo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="65dp"
+                        android:text="週"
+                        android:textColor="#4e515e"
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText,RtlHardcoded" />
+
+                    <Button
+                        android:id="@+id/next_week"
+                        android:layout_width="15dp"
+                        android:layout_height="25dp"
+                        android:background="@mipmap/overtime_btn_apply_right_arrow"
+                        android:paddingTop="7dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/application_linmonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fedede"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    tools:ignore="DisableBaselineAlignment,UselessLeaf">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.2"
+                        android:gravity="bottom|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_dw1_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:text="總筆數："
+                            android:textColor="#212121"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_dw1_TotalCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#212121"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.2"
+                        android:gravity="bottom|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_dw1_title2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:text="總工時："
+                            android:textColor="#212121"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_dw1_TotalＨour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#212121"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_dw1_show2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:text="總成本："
+                            android:textColor="#212121"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_dw1_TotalCost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#212121"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ExpandableListView
+                    android:id="@+id/exp_work_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:divider="#f6f6f6"
+                    android:dividerHeight="2dp"
+                    tools:ignore="RtlHardcoded" />
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_year_select"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="本週無工作報告"
+        android:textColor="#535353"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+</android.widget.RelativeLayout>

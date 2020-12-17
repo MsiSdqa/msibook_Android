@@ -3,41 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_msi_point"
-            android:title="MSI Point" />
-        <item
-            android:id="@+id/nav_ims"
-            android:title="IMS" />
-        <item
-            android:id="@+id/nav_overtime"
-            android:title="出缺勤" />
-        <item
-            android:id="@+id/nav_facility"
-            android:title="週報" />
-        <item
-            android:id="@+id/nav_weekly_report"
-            android:title="週報" />
-    </group>
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_ehr"-->
+            <!--android:title="eHR" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_facility"-->
+            <!--android:title="實驗室" />-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_overtime"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="出缺勤" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_ims"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="IMS" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_rss"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="工作報告" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_mmc"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="資產管理" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_request"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="工單系統" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_certified"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="認證系統" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<item&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/nav_weekly_report"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:title="週報" />&ndash;&gt;-->
 
-    <item android:title="功能">
+    <!--</group>-->
+
+    <item android:title="msiBook">
         <menu>
             <item
-                android:id="@+id/nav_resource_share"
-                android:title="Share" />
+                android:id="@+id/nav_info_history"
+                android:title="版本紀錄"
+                android:icon="@mipmap/overtime_ic_menu_info"/>
             <item
-                android:id="@+id/nav_resume"
-                android:title="Send" />
+                android:id="@+id/nav_checkUpdate"
+                android:title="檢查更新"
+                android:icon="@mipmap/overtime_ic_menu_update"/>
             <item
-                android:id="@+id/nav_mmc"
-                android:title="Send" />
-            <item
-                android:id="@+id/nav_laboratory"
-                android:title="Send" />
-            <item
-                android:id="@+id/nav_message"
-                android:title="Send" />
+                android:id="@+id/nav_QA"
+                android:title="問題回報"
+                android:icon="@mipmap/overtime_ic_menu_question_reply"/>
         </menu>
     </item>
 

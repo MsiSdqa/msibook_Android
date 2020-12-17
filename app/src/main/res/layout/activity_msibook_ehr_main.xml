@@ -5,7 +5,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#f7f8fa"
     android:fitsSystemWindows="true"
     tools:context="dqa.com.msibook.msibook_ehr_main">
 
@@ -20,7 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#000000"
+            android:background="#d21e25"
             android:weightSum="1"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/eHR_PopupOverlay">
@@ -32,11 +32,10 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_creat_pop"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_alignBottom="@+id/toolbar_title"
-                    android:layout_marginBottom="5dp"
+                    android:id="@+id/btn_creat_pop2"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:visibility="invisible"
                     tools:ignore="HardcodedText,ObsoleteLayoutParam,RtlHardcoded" />
@@ -47,19 +46,20 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="eHR 內轉招募"
+                    android:text="內部職缺"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText,InefficientWeight" />
 
                 <Button
-                    android:id="@+id/btn_add_new_job"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:id="@+id/btn_setting_job"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="10dp"
-                    android:background="@mipmap/ehr_btn_toolbar_addopening"
+                    android:background="@mipmap/ehr_btn_hr_jobupdate"
                     tools:ignore="HardcodedText,RtlHardcoded" />
+
             </LinearLayout>
 
         </android.support.v7.widget.Toolbar>
@@ -80,15 +80,41 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ListView
-        android:id="@+id/eHR_main_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/appbar"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:divider="#000000"
-        android:dividerHeight="5dp"
-        android:paddingBottom="40dp" />
+        android:layout_marginTop="0dp"
+        android:visibility="gone">
 
+        <ListView
+            android:id="@+id/eHR_main_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:divider="#f7f8fa"
+            android:dividerHeight="5dp"
+            android:visibility="gone" />
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <ExpandableListView
+        android:id="@+id/exp_ehr_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar"
+        tools:ignore="RtlHardcoded" />
+
+    <ImageView
+        android:id="@+id/imageView_dragon"
+        android:layout_width="260dp"
+        android:layout_height="380dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="gone"
+        app:srcCompat="@mipmap/msibook_bg_img_dragon" />
 </RelativeLayout>

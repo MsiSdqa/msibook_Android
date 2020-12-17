@@ -55,7 +55,7 @@ public class msibook_rss extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.Lsv_RSS_List);
 
         //Find_RandomRSS_List(UserData.WorkID);
-        Find_RandomRSS_List("10015667");
+        Find_RandomRSS_List(UserData.WorkID);
     }
 
     private void Find_RandomRSS_List(String WorkID) {

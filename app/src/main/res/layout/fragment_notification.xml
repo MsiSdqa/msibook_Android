@@ -1,0 +1,34 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationContent"
+    android:background="@android:color/transparent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/refresh_layout">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listView"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:layout_gravity="left|top" />
+
+
+
+        <include
+            android:id="@+id/emptyview"
+            layout="@layout/listview_empty_item"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <!--<TextView-->
+    <!--android:text="Coming Soon Under Construction."-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/textView5" />-->
+</FrameLayout>

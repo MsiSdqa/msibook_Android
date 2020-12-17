@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.apps.ims.MainTab">
+    <!--<item android:id="@+id/New_Issue"-->
+    <!--android:title="New Issue" />-->
+    <!--<item android:id="@+id/GallyToNewIssue"-->
+    <!--android:title="Gally To New Issue" />-->
+    <item
+        android:id="@+id/search"
+        android:icon="@mipmap/ic_search"
+        android:title="@string/search_title"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
+    <item android:id="@+id/QRCode"
+        android:title="QR Code"
+        android:actionLayout="@mipmap/btn_photo" />
+
+    <item
+        android:id="@+id/Contact"
+        android:title="Help Desk" />
+</menu>

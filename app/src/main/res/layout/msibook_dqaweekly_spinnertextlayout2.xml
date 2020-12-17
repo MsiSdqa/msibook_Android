@@ -13,18 +13,17 @@
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/style2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/style2"
-        tools:ignore="Deprecated,HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnusedAttribute"
-        android:textColor="#fff"
-        android:background="#618db5"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textIsSelectable="false"
-        android:singleLine="false"
+        android:background="#d94045"
         android:elevation="0dp"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:singleLine="false"
+        android:textColor="#fff"
+        android:textIsSelectable="false"
         android:textSize="18sp"
-        android:gravity="center">
-    </TextView>
+        tools:ignore="Deprecated,HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage,UnusedAttribute"></TextView>
 </LinearLayout>

@@ -31,4 +31,7 @@
     <dimen name="button_height_medium">40dp</dimen>
     <dimen name="button_height_large">60dp</dimen>
 
+    <dimen name="design_tab_text_size_2line">18sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
 </resources>
