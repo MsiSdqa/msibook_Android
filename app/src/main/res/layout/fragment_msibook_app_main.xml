@@ -13,17 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="5dp"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:visibility="visible">
 
     </android.support.v7.widget.RecyclerView>
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="260dp"
-        android:layout_height="380dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        app:srcCompat="@mipmap/msibook_bg_img_dragon" />
 
     <Button
         android:id="@+id/btn_application_app"
@@ -34,7 +27,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@mipmap/msibook_btn_msibook_appstore"
-        android:text="" />
+        android:text=""
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/button_chenge_MSIT"
@@ -61,5 +55,36 @@
         android:layout_marginBottom="10dp"
         android:layout_toRightOf="@+id/button_chenge_MSIK"
         android:text="切換寶安區" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="260dp"
+        android:layout_height="380dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@mipmap/msibook_bg_img_dragon" />
+
+    <TextView
+        android:id="@+id/textView_onemsi_qr"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_below="@id/textView_onemsi"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/onemsi_qr"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView_onemsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="msiBook已停止更新\n熱門功能已移轉至onemsi App。讓onemsi帶你休閒工作兩不誤\n【點我下載】"
+        android:textColor="#d21e25"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -61,6 +61,9 @@ public class msibook_requset_form_main extends AppCompatActivity {
 
     private String Year;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,8 +100,8 @@ public class msibook_requset_form_main extends AppCompatActivity {
                 startActivityForResult(IntentChart,1);
             }
         });
-
     }
+
 
     private void Find_RequestForm_list(String year,String F_RespUser) {
 
@@ -137,16 +140,15 @@ public class msibook_requset_form_main extends AppCompatActivity {
             @Override
             public void onSendRequestSuccess(String result) {
 
-                String Answer =""; //解決Jason亂碼問題
-                try {
-                    Answer = new String(result.getBytes("ISO-8859-1"), "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+//                String Answer =""; //解決Jason亂碼問題
+//                try {
+//                    Answer = new String(result.getBytes("ISO-8859-1"), "UTF-8");
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
 
                 try {
-
-                    JSONObject obj = new JSONObject(Answer);
+                    JSONObject obj = new JSONObject(result);
 
                     JSONArray UserArray = new JSONArray(obj.getString("Key"));
 

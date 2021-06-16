@@ -87,6 +87,9 @@ public class msibook_app_main extends Fragment {
     private Button button_chenge_MSIK;
     private Button button_chenge_MSIS;
 
+    private TextView textView_onemsi_qr;
+    private TextView textView_onemsi;
+
 
     public msibook_app_main() {
         // Required empty public constructor
@@ -130,6 +133,25 @@ public class msibook_app_main extends Fragment {
         progressBar.setCancelable(true);
         progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressBar.setMessage("資料載入中");
+
+        textView_onemsi_qr= (TextView) v.findViewById(R.id.textView_onemsi_qr);
+        textView_onemsi= (TextView) v.findViewById(R.id.textView_onemsi);
+        textView_onemsi_qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://drive.google.com/drive/folders/16bItYJ8yFibzUx66r0rag5vyvdXNQR2X?usp=sharing"));
+                startActivity(i);
+            }
+        });
+        textView_onemsi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://drive.google.com/drive/folders/16bItYJ8yFibzUx66r0rag5vyvdXNQR2X?usp=sharing"));
+                startActivity(i);
+            }
+        });
 
         btn_application_app = (Button) v.findViewById(R.id.btn_application_app);
         btn_application_app.setOnClickListener(new View.OnClickListener() {

@@ -489,7 +489,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="V4.8"
+                            android:text="V4.9"
                             android:textColor="#828795"
                             android:textSize="16sp" />
                     </LinearLayout>
